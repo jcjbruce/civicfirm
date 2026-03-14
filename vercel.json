@@ -2,11 +2,8 @@
   "buildCommand": "pnpm run build",
   "outputDirectory": "dist",
   "installCommand": "pnpm install",
-  "framework": "vite",
-  "cleanUrls": true,
-  "trailingSlash": false,
   "rewrites": [
-    { "source": "/proposals/:path*", "destination": "/proposals/:path*" },
-    { "source": "/((?!proposals/).*)", "destination": "/index.html" }
+    { "source": "/proposals/(.*)", "destination": "/proposals/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
