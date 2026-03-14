@@ -300,6 +300,125 @@ hr.divider { border: none; border-top: 1px solid var(--gray-100); }
 
 .mt-sm { margin-top: 1rem; } .mt-md { margin-top: 2rem; } .mt-lg { margin-top: 3rem; }
 .note { font-size: 13px; color: var(--gray-400); text-align: center; margin-top: 1.25rem; }
+
+/* ═══════════════════════════════════════════
+   MOBILE OPTIMIZATION — no horizontal scroll
+   ═══════════════════════════════════════════ */
+html, body { overflow-x: hidden; }
+
+/* Nav — compact */
+@media (max-width: 720px) {
+  .nav { height: 56px; padding: 0 1rem; }
+  .nav-btn { font-size: 12px; padding: 6px 14px; }
+  .nav-logo img { height: 22px !important; }
+}
+
+/* Hero */
+@media (max-width: 600px) {
+  .hero { padding: 5rem 1.25rem 6rem; }
+  .hero-title { font-size: clamp(1.85rem,7.5vw,3rem); }
+  .hero-sub { font-size: 14px; margin-bottom: 1.5rem; }
+  .hero-meta { gap: 0.75rem 1.5rem; margin-bottom: 1.5rem; }
+  .meta-divider { display: none; }
+  .meta-val { font-size: 13px; }
+  .pill { font-size: 10px; padding: 4px 10px; }
+  .hero-stat { padding: 1rem; }
+  .hero-stat-num { font-size: 1.15rem; }
+  .hero-stat-label { font-size: 9px; }
+}
+
+/* Global section tightening */
+@media (max-width: 600px) {
+  .section { padding: clamp(2.5rem,6vw,4rem) 0; }
+  .h-section { font-size: clamp(1.4rem,5.5vw,2rem); }
+  .h-sub { font-size: 14px; }
+}
+
+/* Deliverables table → stacked cards on mobile */
+@media (max-width: 600px) {
+  .deliv-table thead { display: none; }
+  .deliv-table, .deliv-table tbody, .deliv-table tr, .deliv-table td { display: block; width: 100%; }
+  .deliv-table tr { padding: 0.85rem 0; border-bottom: 1px solid var(--gray-100); }
+  .deliv-table td { padding: 2px 0; border: none; font-size: 13.5px; }
+  .deliv-table td:first-child { display: inline; }
+  .deliv-table td:nth-child(2) { display: inline; }
+  .deliv-table td:last-child { display: block; margin-top: 6px; }
+  .deliv-table tr:nth-child(even) td { background: none; }
+  .check { width: 16px; height: 16px; font-size: 8px; margin-right: 6px; }
+}
+
+/* Budget table → stacked cards on mobile */
+@media (max-width: 600px) {
+  .budget-table thead { display: none; }
+  .budget-table, .budget-table tbody, .budget-table tfoot, .budget-table tr, .budget-table td { display: block; width: 100%; }
+  .budget-table tbody tr { padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .budget-table td { padding: 2px 0; border: none; }
+  .budget-table td.phase { font-size: 14px; margin-bottom: 4px; }
+  .budget-table td:nth-child(2) { font-size: 12.5px; margin-bottom: 8px; }
+  .budget-table td.cash, .budget-table td.trade, .budget-table td.total { display: inline-block; text-align: left; margin-right: 1rem; font-size: 13px; }
+  .budget-table td.cash::before { content: 'Cash: '; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .budget-table td.trade::before { content: 'Trade: '; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .budget-table td.total::before { content: 'Total: '; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .budget-table tr:nth-child(even) td { background: none; }
+  .budget-table tfoot tr { padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15); }
+  .budget-table tfoot td.phase { font-size: 15px; }
+  .budget-table tfoot td.total { display: inline-block; }
+  .budget-table tfoot td.cash { display: inline-block; }
+  .budget-table tfoot td.trade { display: inline-block; }
+}
+
+/* Budget summary */
+@media (max-width: 480px) {
+  .bsum-num { font-size: 1.6rem; }
+  .budget-sum-cell { padding: 1.25rem; }
+}
+
+/* References — only 2 cards, use 1-col on mobile, 2-col on desktop */
+.ref-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 700px) { .ref-grid { grid-template-columns: 1fr; } }
+
+/* Team cards — horizontal on mobile */
+@media (max-width: 700px) {
+  .team-card { display: grid; grid-template-columns: 110px 1fr; }
+  .team-photo { aspect-ratio: auto; height: 100%; min-height: 140px; }
+  .team-body { padding: 1rem; display: flex; flex-direction: column; justify-content: center; }
+  .team-bio { font-size: 12.5px; }
+  .team-role { font-size: 11px; margin-bottom: 0.5rem; }
+}
+
+/* Standards strip */
+@media (max-width: 580px) {
+  .standards-inner { flex-direction: column; text-align: center; gap: 1rem; }
+  .standards-headline { font-size: 1.25rem; }
+  .standards-stats { gap: 1.5rem; }
+  .ss-num { font-size: 1.4rem; }
+}
+
+/* Closing */
+@media (max-width: 680px) {
+  .closing { padding: 3rem 1.25rem; }
+  .closing-title { font-size: clamp(1.5rem,5vw,2.5rem); }
+  .closing-sub { font-size: 13.5px; }
+  .closing-btns { flex-direction: column; }
+  .closing-btns a { text-align: center; }
+}
+
+/* Footer */
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; gap: 0.5rem; }
+  .footer-copy { font-size: 11px; }
+}
+
+/* Ticker */
+@media (max-width: 600px) {
+  .ticker-item { font-size: 10px; padding: 0 1.25rem; }
+}
+
+/* Project rows */
+@media (max-width: 480px) {
+  .project-row { padding: 1.25rem; gap: 1rem; }
+  .project-desc { font-size: 13px; }
+}
 </style>
 </head>
 <body>
