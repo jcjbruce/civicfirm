@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Civic Firm — BCFC Website Redesign Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:        #2E7D42;
+  --green-dark:   #256B37;
+  --green-pale:   #edf7ef;
+  --navy:         #0A0F1E;
+  --navy-2:       #0D1829;
+  --navy-3:       #111E35;
+  --white:        #FFFFFF;
+  --off-white:    #F8F9FB;
+  --gray-50:      #F3F5F8;
+  --gray-100:     #E8ECF2;
+  --gray-200:     #D1D9E6;
+  --gray-400:     #8A96A8;
+  --gray-500:     #64748B;
+  --gray-700:     #374151;
+  --gray-900:     #111827;
+  --font: 'DM Sans', system-ui, sans-serif;
+  --radius: 8px;
+  --radius-lg: 14px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--white); color: var(--gray-700); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1.25rem,5vw,3rem); background: rgba(10,15,30,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.nav-mark { width: 30px; height: 30px; background: var(--green); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: white; }
+.nav-wordmark { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; color: white; }
+.nav-wordmark span { color: var(--green); }
+.nav-links { display: flex; gap: 1.75rem; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: white; }
+.nav-btn { font-size: 13px; font-weight: 700; color: white; background: var(--green); padding: 8px 20px; border-radius: var(--radius); text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+.nav-btn:hover { background: var(--green-dark); text-decoration: none; }
+@media (max-width: 720px) { .nav-links { display: none; } }
+
+/* SECTION LABEL */
+.sec-label { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; }
+.sec-label::before { content: ''; width: 28px; height: 3px; background: var(--green); display: block; border-radius: 2px; flex-shrink: 0; }
+.sec-label-text { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); }
+
+/* HEADINGS */
+.h-section { font-size: clamp(1.9rem,3.8vw,2.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.025em; color: var(--gray-900); margin-bottom: 1rem; }
+.h-section--white { color: white; }
+.h-section .green { color: var(--green); }
+.h-sub { font-size: 16px; font-weight: 400; color: var(--gray-500); line-height: 1.72; max-width: 600px; }
+.h-sub--white { color: rgba(255,255,255,0.5); }
+
+/* LAYOUT */
+.wrap { max-width: 1020px; margin: 0 auto; padding: 0 clamp(1.25rem,5vw,3rem); }
+.section { padding: clamp(4rem,8vw,5.5rem) 0; }
+.section--navy { background: var(--navy); }
+.section--off { background: var(--off-white); }
+.section--white { background: var(--white); }
+hr.divider { border: none; border-top: 1px solid var(--gray-100); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.16s; } .d3 { transition-delay: 0.24s; } .d4 { transition-delay: 0.32s; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+/* HERO */
+.hero { min-height: auto; background: var(--navy); position: relative; display: flex; align-items: center; padding: 7rem clamp(1.25rem,7vw,5rem) 5rem; overflow: hidden; }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 80px 80px; }
+.hero-glow { position: absolute; top: -8%; right: -4%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(76,175,80,0.11) 0%, transparent 65%); pointer-events: none; }
+.hero-inner { position: relative; z-index: 2; max-width: 660px; }
+.hero-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 1.75rem; opacity: 0; animation: fadeUp 0.7s 0.1s forwards; }
+.hero-eyebrow::before { content: ''; width: 26px; height: 3px; background: var(--green); border-radius: 2px; }
+.hero-eyebrow-text { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); }
+.hero-title { font-size: clamp(3rem,7vw,5rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; color: white; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.7s 0.22s forwards; }
+.hero-title .green { color: var(--green); }
+.hero-sub { font-size: 16.5px; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 480px; margin-bottom: 2.25rem; opacity: 0; animation: fadeUp 0.7s 0.34s forwards; }
+.hero-meta { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.25rem; opacity: 0; animation: fadeUp 0.7s 0.46s forwards; }
+.meta-key { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 3px; }
+.meta-val { font-size: 14px; font-weight: 600; color: white; }
+.meta-divider { width: 1px; background: rgba(255,255,255,0.1); align-self: stretch; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 8px; opacity: 0; animation: fadeUp 0.7s 0.58s forwards; }
+.pill { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.16); padding: 5px 14px; border-radius: 100px; background: rgba(255,255,255,0.04); }
+.hero-stats { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid rgba(255,255,255,0.07); z-index: 2; }
+@media (max-width: 600px) { .hero-stats { grid-template-columns: repeat(2,1fr); } }
+.hero-stat { padding: 1.5rem 2rem; border-right: 1px solid rgba(255,255,255,0.07); }
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num { font-size: 1.75rem; font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 3px; }
+.hero-stat-label { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.38); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* TICKER */
+.ticker-wrap { background: var(--gray-900); overflow: hidden; border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+.ticker-track { display: flex; white-space: nowrap; animation: ticker 28s linear infinite; padding: 11px 0; }
+.ticker-item { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); padding: 0 2rem; flex-shrink: 0; }
+.ticker-item .dot { color: var(--green); margin-right: 2rem; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* COVER LETTER */
+.letter-grid { display: grid; grid-template-columns: 1fr 310px; gap: 4rem; align-items: start; }
+@media (max-width: 760px) { .letter-grid { grid-template-columns: 1fr; } }
+.letter-body p { font-size: 15.5px; color: var(--gray-500); line-height: 1.8; margin-bottom: 1.4rem; }
+.letter-sig { margin-top: 2.5rem; padding: 1.25rem 1.5rem; border-left: 3px solid var(--green); background: var(--green-pale); border-radius: 0 var(--radius) var(--radius) 0; }
+.sig-name { font-size: 15px; font-weight: 800; color: var(--gray-900); margin-bottom: 2px; }
+.sig-title { font-size: 12.5px; font-weight: 500; color: var(--gray-400); margin-top: 2px; }
+.summary-card { background: var(--navy); border-radius: var(--radius-lg); padding: 1.75rem; position: sticky; top: 80px; border: 1px solid rgba(255,255,255,0.07); }
+.card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); padding-bottom: 1rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.card-row { margin-bottom: 1.1rem; }
+.card-row:last-child { margin-bottom: 0; }
+.card-key { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 3px; }
+.card-val { font-size: 14px; font-weight: 600; color: white; }
+.card-val.green { color: var(--green); }
+
+/* NEEDS */
+.needs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-100); border-radius: var(--radius); overflow: hidden; margin-top: 2rem; }
+@media (max-width: 580px) { .needs-grid { grid-template-columns: 1fr; } }
+.need-item { background: white; padding: 1.1rem 1.25rem; display: flex; gap: 12px; align-items: flex-start; }
+.need-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+.need-text { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+
+/* SERVICE ROWS */
+.service-list { display: flex; flex-direction: column; margin-top: 2.5rem; border-top: 1px solid var(--gray-100); }
+.service-row { display: grid; grid-template-columns: 64px 1fr auto; gap: 1.5rem; align-items: start; padding: 2rem 0; border-bottom: 1px solid var(--gray-100); }
+@media (max-width: 580px) { .service-row { grid-template-columns: 48px 1fr; } }
+.service-num { font-size: 1.7rem; font-weight: 800; color: var(--gray-100); letter-spacing: -0.04em; line-height: 1; padding-top: 3px; }
+.service-title { font-size: 17px; font-weight: 700; color: var(--gray-900); margin-bottom: 6px; }
+.service-desc { font-size: 14px; color: var(--gray-500); line-height: 1.65; }
+.service-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.tag { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-500); border: 1px solid var(--gray-200); padding: 4px 10px; border-radius: 100px; background: white; }
+.service-arrow { color: var(--gray-200); font-size: 18px; padding-top: 3px; transition: color 0.2s, transform 0.2s; flex-shrink: 0; }
+.service-row:hover .service-arrow { color: var(--green); transform: translateX(3px); }
+
+/* SCOPE */
+.scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 2rem; }
+@media (max-width: 580px) { .scope-grid { grid-template-columns: 1fr; } }
+.scope-card { background: white; border: 1px solid var(--gray-100); border-radius: var(--radius-lg); padding: 1.75rem; border-top: 3px solid transparent; transition: border-color 0.2s, box-shadow 0.2s; }
+.scope-card:hover { border-top-color: var(--green); box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
+.scope-phase { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 0.5rem; }
+.scope-title { font-size: 16px; font-weight: 800; color: var(--gray-900); margin-bottom: 1rem; }
+.scope-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.scope-list li { font-size: 13.5px; color: var(--gray-500); display: flex; gap: 8px; line-height: 1.5; }
+.scope-list li::before { content: '→'; color: var(--green); font-weight: 700; flex-shrink: 0; font-size: 12px; margin-top: 2px; }
+
+/* DELIVERABLES TABLE */
+.deliv-table { width: 100%; margin-top: 2.5rem; border-collapse: collapse; }
+.deliv-table th { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: white; background: var(--navy); padding: 12px 16px; text-align: left; }
+.deliv-table td { font-size: 14px; color: var(--gray-500); padding: 11px 16px; border-bottom: 1px solid var(--gray-100); vertical-align: middle; }
+.deliv-table tr:nth-child(even) td { background: var(--gray-50); }
+.check { display: inline-flex; width: 20px; height: 20px; background: var(--green); border-radius: 50%; align-items: center; justify-content: center; font-size: 10px; color: white; font-weight: 800; margin-right: 10px; }
+.phase-badge { font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; color: var(--green); background: var(--green-pale); padding: 3px 10px; border-radius: 100px; }
+
+/* TEAM */
+.team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 2.5rem; }
+@media (max-width: 700px) { .team-grid { grid-template-columns: 1fr; } }
+.team-card { border-radius: var(--radius-lg); overflow: hidden; background: var(--gray-50); border: 1px solid var(--gray-100); transition: transform 0.25s, box-shadow 0.25s; }
+.team-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+.team-photo { width: 100%; aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.team-photo-bg { position: absolute; inset: 0; background: radial-gradient(circle at 70% 30%, rgba(76,175,80,0.08) 0%, transparent 55%), var(--navy-3); }
+.team-photo-inner { width: 72px; height: 72px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800; color: white; letter-spacing: -0.03em; position: relative; z-index: 1; }
+.team-body { padding: 1.25rem; }
+.team-name { font-size: 16px; font-weight: 800; color: var(--gray-900); margin-bottom: 2px; }
+.team-role { font-size: 12px; font-weight: 600; color: var(--green); margin-bottom: 0.9rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.team-bio { font-size: 13.5px; color: var(--gray-500); line-height: 1.65; }
+
+/* PROJECTS */
+.project-list { display: flex; flex-direction: column; margin-top: 2rem; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--gray-100); }
+.project-row { display: grid; grid-template-columns: 52px 1fr; gap: 1.5rem; padding: 1.75rem 2rem; background: white; border-bottom: 1px solid var(--gray-100); transition: background 0.2s; align-items: start; }
+.project-row:last-child { border-bottom: none; }
+.project-row:hover { background: var(--gray-50); }
+.project-num { font-size: 2rem; font-weight: 800; color: var(--gray-100); letter-spacing: -0.04em; line-height: 1; padding-top: 4px; }
+.project-name { font-size: 17px; font-weight: 800; color: var(--gray-900); margin-bottom: 2px; }
+.project-type { font-size: 12px; color: var(--gray-400); font-weight: 500; margin-bottom: 8px; }
+.project-desc { font-size: 14px; color: var(--gray-500); line-height: 1.65; margin-bottom: 10px; }
+.project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.project-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); background: var(--green-pale); border: 1px solid rgba(76,175,80,0.2); padding: 3px 10px; border-radius: 100px; }
+
+/* PROCESS */
+.process-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 2.5rem; }
+.process-grid-2 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 16px; }
+@media (max-width: 680px) { .process-grid, .process-grid-2 { grid-template-columns: 1fr; } }
+.process-card { background: white; border: 1px solid var(--gray-100); border-radius: var(--radius-lg); padding: 1.5rem; transition: box-shadow 0.2s; }
+.process-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+.process-card--active { border-color: var(--green); }
+.process-num { font-size: 11px; font-weight: 700; color: var(--gray-400); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+.process-num-badge { width: 22px; height: 22px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: white; flex-shrink: 0; }
+.process-num-badge--out { background: transparent; border: 1.5px solid var(--gray-200); color: var(--gray-400); }
+.process-title { font-size: 16px; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; }
+.process-desc { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+
+.dates-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--gray-100); border-radius: var(--radius); overflow: hidden; margin-top: 3rem; }
+@media (max-width: 580px) { .dates-row { grid-template-columns: 1fr; } }
+.date-item { background: white; padding: 1.25rem 1.5rem; }
+.date-key { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 4px; }
+.date-val { font-size: 15px; font-weight: 800; color: var(--gray-900); }
+.date-val.green { color: var(--green); }
+
+/* BUDGET */
+.budget-summary { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(255,255,255,0.07); border-radius: var(--radius-lg); overflow: hidden; margin: 2.5rem 0; border: 1px solid rgba(255,255,255,0.07); }
+@media (max-width: 480px) { .budget-summary { grid-template-columns: 1fr; } }
+.budget-sum-cell { padding: 2rem 1.75rem; background: rgba(255,255,255,0.02); }
+.budget-sum-cell--hl { background: var(--green); }
+.budget-sum-cell--hl .bsum-label { color: rgba(255,255,255,0.65); }
+.bsum-num { font-size: 2.2rem; font-weight: 800; color: white; letter-spacing: -0.03em; line-height: 1; margin-bottom: 5px; }
+.bsum-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+
+.budget-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.budget-table thead tr { background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.08); }
+.budget-table th { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); padding: 12px 16px; text-align: left; }
+.budget-table th.r { text-align: right; }
+.budget-table td { padding: 13px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.55); vertical-align: top; }
+.budget-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+.budget-table td.phase { font-weight: 700; color: rgba(255,255,255,0.9); }
+.budget-table td.cash { text-align: right; font-weight: 700; color: white; }
+.budget-table td.trade { text-align: right; color: rgba(255,255,255,0.38); }
+.budget-table td.total { text-align: right; font-weight: 800; color: var(--green); font-size: 14.5px; }
+.budget-table tfoot td { border-top: 1px solid rgba(255,255,255,0.15); border-bottom: none; padding-top: 16px; background: transparent !important; }
+.budget-table tfoot td.phase { font-size: 15px; color: white; }
+.budget-table tfoot td.total { font-size: 16px; color: var(--green); }
+
+.payment-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 2.5rem; }
+@media (max-width: 640px) { .payment-grid { grid-template-columns: 1fr; } }
+.payment-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: 1.75rem; border-top: 3px solid var(--green); }
+.pay-pct { font-size: 2.5rem; font-weight: 800; color: var(--green); letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px; }
+.pay-amount { font-size: 15px; font-weight: 700; color: white; margin-bottom: 0.85rem; }
+.pay-title { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 5px; }
+.pay-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+.trade-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.07); border-radius: var(--radius); overflow: hidden; margin-top: 1.5rem; border: 1px solid rgba(255,255,255,0.07); }
+@media (max-width: 580px) { .trade-grid { grid-template-columns: 1fr; } }
+.trade-item { background: rgba(255,255,255,0.02); padding: 1.1rem 1.25rem; display: flex; gap: 12px; }
+.trade-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+.trade-text { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* REFERENCES */
+.ref-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 2.5rem; }
+@media (max-width: 700px) { .ref-grid { grid-template-columns: 1fr; } }
+.ref-card { background: white; border: 1px solid var(--gray-100); border-radius: var(--radius-lg); padding: 1.75rem; border-top: 3px solid var(--green); transition: box-shadow 0.2s; }
+.ref-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+.ref-name { font-size: 16px; font-weight: 800; color: var(--gray-900); margin-bottom: 2px; }
+.ref-role { font-size: 11.5px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+.ref-org { font-size: 13px; color: var(--gray-400); font-weight: 500; margin-bottom: 1.1rem; }
+.ref-contact { font-size: 13px; color: var(--gray-500); margin-bottom: 5px; }
+.ref-contact a { color: var(--green); font-weight: 600; }
+.ref-context { font-size: 13px; color: var(--gray-500); line-height: 1.65; padding-top: 1rem; margin-top: 1rem; border-top: 1px solid var(--gray-100); }
+
+/* STANDARDS STRIP */
+.standards-strip { background: var(--green); padding: 2.5rem clamp(1.25rem,5vw,3rem); }
+.standards-inner { max-width: 1020px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.standards-headline { font-size: clamp(1.5rem,3vw,2.1rem); font-weight: 800; color: white; letter-spacing: -0.02em; }
+.standards-stats { display: flex; gap: 2.5rem; }
+.ss-num { font-size: 2rem; font-weight: 800; color: white; letter-spacing: -0.03em; line-height: 1; }
+.ss-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.65); letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* CLOSING */
+.closing { background: var(--navy); padding: 6rem clamp(1.25rem,7vw,5rem); }
+.closing-grid { max-width: 1020px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+@media (max-width: 680px) { .closing-grid { grid-template-columns: 1fr; } }
+.closing-title { font-size: clamp(2.2rem,4.5vw,3.2rem); font-weight: 800; line-height: 1.07; letter-spacing: -0.03em; color: white; margin-bottom: 1.25rem; }
+.closing-title .green { color: var(--green); }
+.closing-sub { font-size: 15px; color: rgba(255,255,255,0.42); line-height: 1.75; margin-bottom: 2rem; }
+.closing-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary { font-size: 13px; font-weight: 700; color: white; background: var(--green); padding: 12px 24px; border-radius: var(--radius); text-decoration: none; transition: background 0.2s; }
+.btn-primary:hover { background: var(--green-dark); text-decoration: none; }
+.btn-ghost { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.48); background: transparent; border: 1px solid rgba(255,255,255,0.14); padding: 12px 24px; border-radius: var(--radius); text-decoration: none; transition: all 0.2s; }
+.btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.38); text-decoration: none; }
+.closing-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: 2rem; }
+.cc-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; }
+.cc-row { margin-bottom: 1.1rem; }
+.cc-row:last-child { margin-bottom: 0; }
+.cc-key { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 3px; }
+.cc-val { font-size: 14px; font-weight: 600; color: white; }
+.cc-val a { color: var(--green); }
+
+/* FOOTER */
+.footer { background: var(--navy-2); padding: 2rem clamp(1.25rem,5vw,3rem); border-top: 1px solid rgba(255,255,255,0.05); }
+.footer-inner { max-width: 1020px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.footer-mark { width: 26px; height: 26px; background: var(--green); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: white; }
+.footer-wordmark { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; }
+.footer-wordmark span { color: var(--green); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); }
+.footer-copy a { color: rgba(255,255,255,0.38); }
+
+/* PROGRESS DOTS */
+.progress-nav { position: fixed; right: 1.25rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; z-index: 150; }
+@media (max-width: 1080px) { .progress-nav { display: none; } }
+.p-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.15); cursor: pointer; transition: all 0.25s; position: relative; }
+.p-dot.active, .p-dot:hover { background: var(--green); transform: scale(1.4); }
+.p-dot::after { content: attr(data-label); position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: white; background: var(--navy); border: 1px solid rgba(255,255,255,0.1); padding: 3px 9px; border-radius: 5px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+.p-dot:hover::after { opacity: 1; }
+
+.mt-sm { margin-top: 1rem; } .mt-md { margin-top: 2rem; } .mt-lg { margin-top: 3rem; }
+.note { font-size: 13px; color: var(--gray-400); text-align: center; margin-top: 1.25rem; }
+</style>
+</head>
+<body>
+
+<!-- Progress Nav -->
+<nav class="progress-nav">
+  <div class="p-dot active"  data-label="Cover"      onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="p-dot"         data-label="Letter"     onclick="document.getElementById('letter').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="p-dot"         data-label="Summary"    onclick="document.getElementById('summary').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="p-dot"         data-label="About"      onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="p-dot"         data-label="Scope"      onclick="document.getElementById('scope').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="p-dot"         data-label="Team"       onclick="document.getElementById('team').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="p-dot"         data-label="Work"       onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="p-dot"         data-label="Timeline"   onclick="document.getElementById('timeline').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="p-dot"         data-label="Budget"     onclick="document.getElementById('budget').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="p-dot"         data-label="References" onclick="document.getElementById('references').scrollIntoView({behavior:'smooth'})"></div>
+</nav>
+
+<!-- Nav -->
+<header class="nav">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-mark">C</div>
+    <span class="nav-wordmark">CIVIC<span>FIRM</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#scope">Scope</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+  <a href="mailto:hello@civicfirm.com?subject=BCFC Proposal — Follow-Up" class="nav-btn">Work With Us →</a>
+</header>
+
+
+<!-- ── HERO ── -->
+<section id="hero" style="position:relative;">
+  <div class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><span class="hero-eyebrow-text">Website Redesign Proposal</span></div>
+      <h1 class="hero-title">A digital presence<br>worthy of Boulder County's<br><span class="green">creative stage.</span></h1>
+      <p class="hero-sub">A proposal for the Boulder County Film Commission website redesign — prepared by Civic Firm, an institutional digital partner for organizations that serve the public.</p>
+      <div class="hero-meta">
+        <div><div class="meta-key">Prepared For</div><div class="meta-val">Boulder County Film Commission</div></div>
+        <div class="meta-divider"></div>
+        <div><div class="meta-key">Prepared By</div><div class="meta-val">Civic Firm</div></div>
+        <div class="meta-divider"></div>
+        <div><div class="meta-key">Submission Date</div><div class="meta-val">March 13, 2026</div></div>
+      </div>
+      <div class="hero-badges">
+        <span class="pill">WCAG 2.1 AA</span>
+        <span class="pill">ADA Title II</span>
+        <span class="pill">Section 508</span>
+        <span class="pill">Mobile-First</span>
+        <span class="pill">CMS Training Included</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">50+</div><div class="hero-stat-label">Institutional Clients</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">On-Time Delivery</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">WCAG 2.1 AA</div><div class="hero-stat-label">Every Build</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Sectors Served</div></div>
+  </div>
+</section>
+
+<!-- Ticker -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">GOVERNMENT<span class="dot"> · </span></span>
+    <span class="ticker-item">K–12 EDUCATION<span class="dot"> · </span></span>
+    <span class="ticker-item">NONPROFIT<span class="dot"> · </span></span>
+    <span class="ticker-item">INDIGENOUS ORGANIZATIONS<span class="dot"> · </span></span>
+    <span class="ticker-item">HOUSING AUTHORITIES<span class="dot"> · </span></span>
+    <span class="ticker-item">ARTS &amp; CULTURE<span class="dot"> · </span></span>
+    <span class="ticker-item">ASSOCIATIONS<span class="dot"> · </span></span>
+    <span class="ticker-item">FILM COMMISSIONS<span class="dot"> · </span></span>
+    <span class="ticker-item">GOVERNMENT<span class="dot"> · </span></span>
+    <span class="ticker-item">K–12 EDUCATION<span class="dot"> · </span></span>
+    <span class="ticker-item">NONPROFIT<span class="dot"> · </span></span>
+    <span class="ticker-item">INDIGENOUS ORGANIZATIONS<span class="dot"> · </span></span>
+    <span class="ticker-item">HOUSING AUTHORITIES<span class="dot"> · </span></span>
+    <span class="ticker-item">ARTS &amp; CULTURE<span class="dot"> · </span></span>
+    <span class="ticker-item">ASSOCIATIONS<span class="dot"> · </span></span>
+    <span class="ticker-item">FILM COMMISSIONS<span class="dot"> · </span></span>
+  </div>
+</div>
+
+
+<!-- ── COVER LETTER ── -->
+<section class="section section--white" id="letter">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="sec-label-text">Cover Letter</span></div>
+    <div class="letter-grid">
+      <div class="letter-body reveal d1">
+        <p>March 13, 2026</p>
+        <p>Dear Courtney and the Selection Committee,</p>
+        <p>We are pleased to submit this proposal for the redesign of the Boulder County Film Commission website. At Civic Firm, we build accessible, compliant, and beautifully designed digital platforms for institutions that serve the public — and arts and culture organizations represent some of our most meaningful and visually ambitious work.</p>
+        <p>We understand what is at stake. BCFC needs a digital presence that can hold its own on the global stage — capturing the cinematic energy of Boulder County and compelling filmmakers, producers, and location scouts from around the world to choose Colorado. This is not simply a website refresh; it is an opportunity to shape how Boulder County is perceived internationally, particularly during high-visibility moments like Sundance.</p>
+        <p>Our team brings the rare combination this project demands: creative ambition paired with institutional discipline. Ray Amari, our Founder and Managing Director, leads all technical builds with over a decade of WordPress development and accessibility expertise. Dr. Jason Bruce directs information architecture and user experience across all projects. Dr. Marisol Navarrete leads content strategy, SEO, and multimedia design. Together, we deliver work that is visually striking, technically rigorous, and built to last.</p>
+        <p>This proposal outlines our complete approach, timeline, and a hybrid cash/trade budget structured within the $15,000 ceiling. We look forward to the opportunity to discuss this further.</p>
+        <div class="letter-sig">
+          <div class="sig-name">Ray Amari &amp; Jason Bruce</div>
+          <div class="sig-title">Co-Founders, Civic Firm</div>
+          <div class="sig-title" style="margin-top:5px;"><a href="mailto:hello@civicfirm.com">hello@civicfirm.com</a> &nbsp;·&nbsp; <a href="https://civicfirm.com" target="_blank">civicfirm.com</a></div>
+        </div>
+      </div>
+      <div class="summary-card reveal d2">
+        <div class="card-label">Proposal At a Glance</div>
+        <div class="card-row"><div class="card-key">Client</div><div class="card-val">Boulder County Film Commission</div></div>
+        <div class="card-row"><div class="card-key">RFP Contact</div><div class="card-val"><a href="mailto:RFP@boulderchamber.com" style="color:var(--green);">Courtney Warford</a></div></div>
+        <div class="card-row"><div class="card-key">Project</div><div class="card-val">Website Redesign &amp; Development</div></div>
+        <div class="card-row"><div class="card-key">Total Value</div><div class="card-val green">$14,500 (Cash + Trade)</div></div>
+        <div class="card-row"><div class="card-key">Cash Component</div><div class="card-val">$10,000</div></div>
+        <div class="card-row"><div class="card-key">Timeline</div><div class="card-val">16 Weeks · Apr 13 → Aug 1, 2026</div></div>
+        <div class="card-row"><div class="card-key">Submitted By</div><div class="card-val">Civic Firm</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── SUMMARY ── -->
+<section class="section section--off" id="summary">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="sec-label-text">01 · Executive Summary</span></div>
+    <h2 class="h-section reveal d1">Digital built for those <span class="green">who serve communities.</span></h2>
+    <p class="h-sub reveal d2">Civic Firm is an institutional digital studio specializing in accessible, high-performance websites for organizations that serve the public. Since 2019, we have delivered 50+ institutional projects with a 100% on-time record — built on transparent, milestone-driven processes and honest partnership.</p>
+    <div class="reveal d3" style="background:var(--green-pale);border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.75rem;margin:2rem 0;">
+      <p style="font-size:15.5px;font-style:italic;color:var(--gray-700);line-height:1.7;font-weight:500;">"We understand exactly what is at stake. BCFC needs more than a redesign — it needs a digital presence that commands immediate attention on the global stage, particularly with Sundance and Colorado's rising profile as a creative hub."</p>
+    </div>
+    <h3 style="font-size:16px;font-weight:800;color:var(--gray-900);margin-bottom:1rem;" class="reveal d1">What BCFC Needs</h3>
+    <div class="needs-grid reveal d2">
+      <div class="need-item"><div class="need-dot"></div><div class="need-text">A bold, visually striking aesthetic that reflects the cinematic energy of Boulder County</div></div>
+      <div class="need-item"><div class="need-dot"></div><div class="need-text">Intuitive access for filmmakers, producers, and location scouts to resources and production support</div></div>
+      <div class="need-item"><div class="need-dot"></div><div class="need-text">A platform that draws international attention during high-visibility moments like Sundance</div></div>
+      <div class="need-item"><div class="need-dot"></div><div class="need-text">WCAG 2.1 AA accessibility compliance and flawless performance across all devices</div></div>
+      <div class="need-item"><div class="need-dot"></div><div class="need-text">A sustainable, low-cost CMS that BCFC staff can manage confidently post-launch</div></div>
+      <div class="need-item"><div class="need-dot"></div><div class="need-text">Blog, newsletter, searchable creative directory, and location gallery infrastructure</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Standards Strip -->
+<div class="standards-strip">
+  <div class="standards-inner">
+    <div class="standards-headline">Built to meet <span style="color:var(--navy);">every requirement.</span></div>
+    <div class="standards-stats">
+      <div><div class="ss-num">WCAG 2.1 AA</div><div class="ss-label">Every Build Compliant</div></div>
+      <div><div class="ss-num">100%</div><div class="ss-label">On-Time Delivery</div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ── ABOUT ── -->
+<section class="section section--white" id="about">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="sec-label-text">02 · About Civic Firm</span></div>
+    <h2 class="h-section reveal d1">Everything your <span class="green">organization needs.</span></h2>
+    <p class="h-sub reveal d2">We design and build custom websites that are accessible, mobile-first, and built to the standards institutional RFPs require — on time, on budget, and built to last.</p>
+    <div class="service-list reveal d2">
+      <div class="service-row">
+        <div class="service-num">01</div>
+        <div>
+          <div class="service-title">Web Design &amp; Development</div>
+          <div class="service-desc">Custom, accessible, mobile-first websites built to WCAG 2.1 AA and ADA Title II standards. Every site includes a fully trained CMS so your team can manage content from day one — no developer dependency after launch.</div>
+          <div class="service-tags"><span class="tag">WCAG 2.1 AA</span><span class="tag">ADA COMPLIANT</span><span class="tag">CMS TRAINING</span><span class="tag">MOBILE-FIRST</span><span class="tag">CONTENT MIGRATION</span></div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-row">
+        <div class="service-num">02</div>
+        <div>
+          <div class="service-title">Brand &amp; Content Strategy</div>
+          <div class="service-desc">Voice, visual language, and content architecture that makes your mission clear to every audience — filmmakers, residents, donors, or board members. We develop the message before a single pixel is placed.</div>
+          <div class="service-tags"><span class="tag">BRAND IDENTITY</span><span class="tag">CONTENT STRATEGY</span><span class="tag">SEO</span><span class="tag">MULTILINGUAL</span></div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-row">
+        <div class="service-num">03</div>
+        <div>
+          <div class="service-title">Motion, Media &amp; Educational Content</div>
+          <div class="service-desc">Animations, explainer videos, and multimedia content for campaigns, training, and digital communications that help organizations tell their story in motion as compellingly as in print.</div>
+          <div class="service-tags"><span class="tag">ANIMATION</span><span class="tag">VIDEO PRODUCTION</span><span class="tag">INTERACTIVE TOOLS</span></div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-row">
+        <div class="service-num">04</div>
+        <div>
+          <div class="service-title">Ongoing Support &amp; Maintenance</div>
+          <div class="service-desc">Maintenance contracts, security updates, accessibility audits, and ongoing development to keep your digital presence current, compliant, and performing long after launch day.</div>
+          <div class="service-tags"><span class="tag">MAINTENANCE CONTRACTS</span><span class="tag">SECURITY UPDATES</span><span class="tag">ACCESSIBILITY AUDITS</span><span class="tag">HOSTING</span></div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── SCOPE ── -->
+<section class="section section--off" id="scope">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="sec-label-text">03 · Scope, Approach &amp; Deliverables</span></div>
+    <h2 class="h-section reveal d1">Everything the RFP requires. <span class="green">And more.</span></h2>
+    <p class="h-sub reveal d2">Our scope addresses every requirement in the BCFC RFP — from discovery and strategy through to post-launch support — while bringing forward-thinking design that reflects Boulder County's cinematic identity.</p>
+    <div class="scope-grid reveal d2">
+      <div class="scope-card">
+        <div class="scope-phase">Phase 01</div>
+        <div class="scope-title">Discovery &amp; Strategy</div>
+        <ul class="scope-list">
+          <li>Stakeholder interviews with BCFC and Chamber team</li>
+          <li>UX audit — performance, structure, and content gaps</li>
+          <li>New information architecture and revised sitemap</li>
+          <li>User personas and journey mapping (filmmakers, producers, scouts)</li>
+          <li>Creative brief and mood board development</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-phase">Phase 02</div>
+        <div class="scope-title">Design</div>
+        <ul class="scope-list">
+          <li>2–3 creative directions with mood boards for BCFC review</li>
+          <li>Full responsive design — desktop, tablet, and mobile</li>
+          <li>Visual style guide: typography, colour, photography direction</li>
+          <li>Interactive prototypes for key page templates</li>
+          <li>Location gallery design and interactive map approach</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-phase">Phase 03</div>
+        <div class="scope-title">Development</div>
+        <ul class="scope-list">
+          <li>WordPress CMS setup (Kadence visual builder)</li>
+          <li>Fully responsive, mobile-first build across all devices</li>
+          <li>Open-source fonts and resources prioritized throughout</li>
+          <li>Video and hi-res image galleries</li>
+          <li>Interactive location gallery with map integration</li>
+          <li>Creative Directory — searchable and filterable</li>
+          <li>Blog, newsletter, and user walkthrough web tools</li>
+          <li>All plugins sustainable with limited ongoing costs</li>
+          <li>WCAG 2.1 AA compliance throughout</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-phase">Phases 04–06</div>
+        <div class="scope-title">Content, QA &amp; Launch</div>
+        <ul class="scope-list">
+          <li>Full content migration from current site</li>
+          <li>Optional content rewriting and restructuring</li>
+          <li>SEO setup — sitemap, metadata, Core Web Vitals</li>
+          <li>Cross-device and cross-browser QA</li>
+          <li>Accessibility validation and final audit</li>
+          <li>CMS training for BCFC and Chamber staff</li>
+          <li>30-day post-launch support and bug-fix warranty</li>
+        </ul>
+      </div>
+    </div>
+    <div style="background:white;border:1px solid var(--gray-100);border-radius:var(--radius-lg);padding:1.75rem;margin-top:2rem;border-top:3px solid var(--green);" class="reveal d3">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:0.75rem;">Technical Approach &amp; CMS Recommendation</div>
+      <h3 style="font-size:17px;font-weight:800;color:var(--gray-900);margin-bottom:1rem;">WordPress + Kadence — Built for Sustainability</h3>
+      <p style="font-size:14px;color:var(--gray-500);line-height:1.7;margin-bottom:1rem;">We recommend WordPress as the CMS for BCFC — the most widely adopted open-source CMS in the world, powering over 40% of all websites. Paired with the Kadence visual builder, this gives BCFC staff full control over content, layout, and media without developer dependency.</p>
+      <div class="needs-grid" style="margin-top:1rem;">
+        <div class="need-item"><div class="need-dot"></div><div class="need-text"><strong>Open-source foundation</strong> — no licensing fees, no vendor lock-in, massive ecosystem of free plugins and themes</div></div>
+        <div class="need-item"><div class="need-dot"></div><div class="need-text"><strong>Kadence visual builder</strong> — intuitive drag-and-drop editing that non-technical staff can learn in a single training session</div></div>
+        <div class="need-item"><div class="need-dot"></div><div class="need-text"><strong>Sustainable plugin strategy</strong> — all plugins selected for long-term viability, active maintenance, and zero or minimal recurring costs</div></div>
+        <div class="need-item"><div class="need-dot"></div><div class="need-text"><strong>Performance-first architecture</strong> — optimized hosting, CDN delivery, lazy loading, and Core Web Vitals tuning for sub-2-second load times</div></div>
+        <div class="need-item"><div class="need-dot"></div><div class="need-text"><strong>WCAG 2.1 AA from the ground up</strong> — semantic HTML, ARIA landmarks, keyboard navigation, color contrast validation, and screen reader testing</div></div>
+        <div class="need-item"><div class="need-dot"></div><div class="need-text"><strong>Open-source typography</strong> — all fonts sourced from Google Fonts or similar free libraries, ensuring zero ongoing font licensing costs</div></div>
+      </div>
+    </div>
+    <table class="deliv-table reveal d3">
+      <thead><tr><th colspan="2">Key Deliverables</th><th>Phase</th></tr></thead>
+      <tbody>
+        <tr><td><span class="check">✓</span></td><td>Revised sitemap and information architecture document</td><td><span class="phase-badge">Discovery</span></td></tr>
+        <tr><td><span class="check">✓</span></td><td>Complete design package — style guide and interactive prototypes</td><td><span class="phase-badge">Design</span></td></tr>
+        <tr><td><span class="check">✓</span></td><td>Fully built, responsive WordPress website</td><td><span class="phase-badge">Development</span></td></tr>
+        <tr><td><span class="check">✓</span></td><td>Creative Directory — integrated, searchable online directory</td><td><span class="phase-badge">Development</span></td></tr>
+        <tr><td><span class="check">✓</span></td><td>CMS training materials and video walkthroughs</td><td><span class="phase-badge">Launch</span></td></tr>
+        <tr><td><span class="check">✓</span></td><td>Full technical documentation</td><td><span class="phase-badge">Launch</span></td></tr>
+        <tr><td><span class="check">✓</span></td><td>Post-launch support plan — 30-day warranty</td><td><span class="phase-badge">Support</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── TEAM ── -->
+<section class="section section--white" id="team">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="sec-label-text">04 · Project Team</span></div>
+    <h2 class="h-section reveal d1">The people behind <span class="green">the work.</span></h2>
+    <p class="h-sub reveal d2">A tight-knit team of designers, strategists, developers, and storytellers who care deeply about craft. All work delivered entirely in-house — no external subcontractors, no surprises.</p>
+    <div class="team-grid">
+      <div class="team-card reveal d1">
+        <div class="team-photo" style="background:var(--navy-3);"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663407421710/CU5JQUQHP3FutNoS5xA4np/reza-amari_6e0b802d.png" alt="Ray Amari" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div>
+        <div class="team-body">
+          <div class="team-name">Ray Amari, M.Mgt.</div>
+          <div class="team-role">Founder &amp; Managing Director</div>
+          <div class="team-bio">Over a decade of experience in custom WordPress development, platform architecture, and accessibility compliance. Primary technical lead — responsible for all CMS setup, development build, and platform delivery on this engagement.</div>
+        </div>
+      </div>
+      <div class="team-card reveal d2">
+        <div class="team-photo" style="background:var(--navy-3);"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663407421710/CU5JQUQHP3FutNoS5xA4np/jason-bruce_24906696.png" alt="Dr. Jason Bruce" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div>
+        <div class="team-body">
+          <div class="team-name">Dr. Jason Bruce</div>
+          <div class="team-role">Co-Founder &amp; Director of Strategy</div>
+          <div class="team-bio">Deep expertise in digital platform development, information architecture, and user experience across national organizations. Leads discovery, IA, UX direction, and project coordination throughout the engagement.</div>
+        </div>
+      </div>
+      <div class="team-card reveal d3">
+        <div class="team-photo" style="background:var(--navy-3);"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663407421710/CU5JQUQHP3FutNoS5xA4np/marisol-navarrete_4717efd6.png" alt="Dr. Marisol Navarrete" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div>
+        <div class="team-body">
+          <div class="team-name">Dr. Marisol Navarrete</div>
+          <div class="team-role">Director of Content Design</div>
+          <div class="team-bio">Leads content strategy, SEO, and multimedia design across all Civic Firm projects. Oversees content architecture, accessibility review, and QA — ensuring the platform communicates compellingly to global creative audiences.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── EXPERIENCE ── -->
+<section class="section section--off" id="experience">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="sec-label-text">05 · Selected Work</span></div>
+    <h2 class="h-section reveal d1">Trusted by the organizations <span class="green">we serve.</span></h2>
+    <p class="h-sub reveal d2">Projects most relevant to BCFC's needs — creative design for arts and culture organizations, accessible WordPress development, and community-facing digital platforms.</p>
+    <div class="project-list reveal d2">
+      <div class="project-row">
+        <div class="project-num">01</div>
+        <div>
+          <div class="project-name">Mentee</div>
+          <div class="project-type">Indigenous Community Platform &nbsp;·&nbsp; <a href="https://mentee.ca" target="_blank">mentee.ca</a></div>
+          <div class="project-desc">A values-driven website supporting Indigenous education through culturally grounded, evidence-based solutions. Features a clean, modern interface with clear audience pathways and a fully managed CMS. Demonstrates our ability to build mission-driven, visually distinct platforms for community organizations.</div>
+          <div class="project-tags"><span class="project-tag">WEB DESIGN</span><span class="project-tag">DIGITAL PLATFORM</span><span class="project-tag">COMMUNITY</span></div>
+        </div>
+      </div>
+      <div class="project-row">
+        <div class="project-num">02</div>
+        <div>
+          <div class="project-name">EagleFeather</div>
+          <div class="project-type">Indigenous Media &amp; Journalism Platform &nbsp;·&nbsp; In Development</div>
+          <div class="project-desc">A bold digital platform built to elevate Indigenous media and journalism — balancing professional credibility with strong cultural identity. Rich content areas for news, opinion, and community highlights. Directly relevant as a model for a creative institution site with high visual standards and ongoing content publishing needs.</div>
+          <div class="project-tags"><span class="project-tag">ARTS &amp; CULTURE</span><span class="project-tag">EDITORIAL PLATFORM</span><span class="project-tag">MEDIA</span></div>
+        </div>
+      </div>
+      <div class="project-row">
+        <div class="project-num">03</div>
+        <div>
+          <div class="project-name">GoGo Wellness Clinic</div>
+          <div class="project-type">Premium Brand &amp; Website &nbsp;·&nbsp; <a href="https://gogowellnessclinic.com" target="_blank">gogowellnessclinic.com</a></div>
+          <div class="project-desc">A premium brand and website built to convey luxury, professionalism, and global trust. Demonstrates our ability to deliver high-impact visual design for organizations where first impressions are paramount.</div>
+          <div class="project-tags"><span class="project-tag">WEBSITE</span><span class="project-tag">BRANDING</span><span class="project-tag">PREMIUM DESIGN</span></div>
+        </div>
+      </div>
+      <div class="project-row">
+        <div class="project-num">04</div>
+        <div>
+          <div class="project-name">TucsonTots</div>
+          <div class="project-type">Community Education Website &nbsp;·&nbsp; <a href="https://tucsontots.com" target="_blank">tucsontots.com</a></div>
+          <div class="project-desc">A clean, accessible website for an early childhood education program — balancing creative design with strict accessibility compliance and ease of CMS management for non-technical staff.</div>
+          <div class="project-tags"><span class="project-tag">WEBSITE</span><span class="project-tag">BRANDING</span><span class="project-tag">CONTENT</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="note reveal">Additional examples, case studies, and live walkthroughs available upon request.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── TIMELINE ── -->
+<section class="section section--white" id="timeline">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="sec-label-text">06 · Workplan &amp; Timeline</span></div>
+    <h2 class="h-section reveal d1">Six steps. <span class="green">No surprises.</span></h2>
+    <p class="h-sub reveal d2">Every project follows a structured, milestone-based delivery process with clear checkpoints and documented deliverables at every stage. Kickoff April 13 → Target Launch August 1, 2026.</p>
+    <div class="process-grid reveal d2">
+      <div class="process-card process-card--active">
+        <div class="process-num"><div class="process-num-badge">01</div>Wks 1–2 · Apr 13–25</div>
+        <div class="process-title">Discovery</div>
+        <div class="process-desc">Structured stakeholder interviews, audience research, content audit, and technical requirements gathering. Nothing is assumed.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num"><div class="process-num-badge">02</div>Wks 3–5 · Apr 28–May 16</div>
+        <div class="process-title">Design</div>
+        <div class="process-desc">Wireframes, then high-fidelity mockups for stakeholder review. Design is iterative — BCFC approves every major decision before development begins.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num"><div class="process-num-badge">03</div>Wks 6–11 · May 19–Jun 27</div>
+        <div class="process-title">Build</div>
+        <div class="process-desc">Accessibility baked in from the start — not retrofitted. Clean, documented, maintainable code with full CMS, galleries, directory, and blog.</div>
+      </div>
+    </div>
+    <div class="process-grid-2 reveal d3">
+      <div class="process-card">
+        <div class="process-num"><div class="process-num-badge process-num-badge--out">04</div>Wks 12–13 · Jun 30–Jul 11</div>
+        <div class="process-title">Content &amp; Functionality</div>
+        <div class="process-desc">Content migration, SEO setup, Creative Directory integration, navigation refinement, and Core Web Vitals optimization.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num"><div class="process-num-badge process-num-badge--out">05</div>Wks 14–15 · Jul 14–25</div>
+        <div class="process-title">Launch</div>
+        <div class="process-desc">Thorough QA testing, accessibility audits, cross-browser and device testing, and content migration before a carefully managed go-live.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num"><div class="process-num-badge process-num-badge--out">06</div>Wk 16 · Jul 28–Aug 1</div>
+        <div class="process-title">Support</div>
+        <div class="process-desc">CMS training, administrator documentation, 30-day post-launch warranty, and ongoing maintenance support if required.</div>
+      </div>
+    </div>
+    <div class="dates-row reveal d3">
+      <div class="date-item"><div class="date-key">Proposals Due</div><div class="date-val">March 13, 2026</div></div>
+      <div class="date-item"><div class="date-key">Project Kickoff</div><div class="date-val">April 13, 2026</div></div>
+      <div class="date-item"><div class="date-key">Target Launch</div><div class="date-val green">August 1, 2026</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── BUDGET ── -->
+<section class="section section--navy" id="budget">
+  <div class="wrap">
+    <div class="sec-label sec-label--light reveal"><span class="sec-label-text">07 · Budget &amp; Hybrid Cash / Trade Proposal</span></div>
+    <h2 class="h-section h-section--white reveal d1">Maximum value. <span class="green">Full transparency.</span></h2>
+    <p class="h-sub h-sub--white reveal d2">All fees are in US dollars. The total proposal does not exceed the $15,000 cash/trade ceiling. The hybrid model maximizes value delivered to BCFC while keeping cash outlay well within budget.</p>
+    <div class="budget-summary reveal d2">
+      <div class="budget-sum-cell"><div class="bsum-num">$14,500</div><div class="bsum-label">Total Project Value</div></div>
+      <div class="budget-sum-cell"><div class="bsum-num">$10,000</div><div class="bsum-label">Cash Component</div></div>
+      <div class="budget-sum-cell budget-sum-cell--hl"><div class="bsum-num">$4,500</div><div class="bsum-label">Trade Value</div></div>
+    </div>
+    <table class="budget-table reveal d2">
+      <thead><tr><th>Phase</th><th>Scope</th><th class="r">Cash</th><th class="r">Trade</th><th class="r">Total</th></tr></thead>
+      <tbody>
+        <tr><td class="phase">Discovery &amp; Strategy</td><td>Stakeholder interviews, site audit, IA, personas, creative brief</td><td class="cash">$1,500</td><td class="trade">$500</td><td class="total">$2,000</td></tr>
+        <tr><td class="phase">Design</td><td>Mood boards, full responsive design, style guide, prototypes</td><td class="cash">$2,500</td><td class="trade">$1,000</td><td class="total">$3,500</td></tr>
+        <tr><td class="phase">Development</td><td>WordPress CMS, responsive build, galleries, maps, directory, blog, WCAG 2.1 AA</td><td class="cash">$4,000</td><td class="trade">$2,000</td><td class="total">$6,000</td></tr>
+        <tr><td class="phase">Content &amp; Functionality</td><td>Content migration, SEO, web tools, Creative Directory</td><td class="cash">$1,000</td><td class="trade">$500</td><td class="total">$1,500</td></tr>
+        <tr><td class="phase">Testing &amp; QA</td><td>Cross-device QA, accessibility validation, performance optimization</td><td class="cash">$500</td><td class="trade">$250</td><td class="total">$750</td></tr>
+        <tr><td class="phase">Launch &amp; Support</td><td>Launch coordination, CMS training, documentation, 30-day warranty</td><td class="cash">$500</td><td class="trade">$250</td><td class="total">$750</td></tr>
+      </tbody>
+      <tfoot><tr><td class="phase" colspan="2">Total Project Value</td><td class="cash">$10,000</td><td class="trade">$4,500</td><td class="total">$14,500</td></tr></tfoot>
+    </table>
+    <div style="margin-top:2rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-lg);padding:1.75rem;" class="reveal d3">
+      <h4 style="font-size:14px;font-weight:700;color:white;margin-bottom:1rem;">Trade Value Components — $4,500</h4>
+      <div class="trade-grid">
+        <div class="trade-item"><div class="trade-dot"></div><div class="trade-text">Portfolio and case study rights — BCFC featured as a flagship project across Civic Firm marketing and RFP submissions</div></div>
+        <div class="trade-item"><div class="trade-dot"></div><div class="trade-text">Cross-promotional visibility — Civic Firm credited on BCFC website footer and project documentation</div></div>
+        <div class="trade-item"><div class="trade-dot"></div><div class="trade-text">Extended post-launch support — additional 60 days of priority bug fixes and minor content updates beyond the standard 30-day warranty</div></div>
+        <div class="trade-item"><div class="trade-dot"></div><div class="trade-text">Social media co-promotion — coordinated launch announcements across both organizations' channels</div></div>
+      </div>
+    </div>
+    <div class="mt-lg reveal">
+      <h3 style="font-size:17px;font-weight:800;color:white;margin-bottom:1rem;">Proposed Payment Structure</h3>
+      <div class="payment-grid">
+        <div class="payment-card"><div class="pay-pct">30%</div><div class="pay-amount">$3,000</div><div class="pay-title">Project Kickoff</div><div class="pay-desc">Due upon contract signing. Covers discovery, IA, UX direction, and technical planning.</div></div>
+        <div class="payment-card"><div class="pay-pct">40%</div><div class="pay-amount">$4,000</div><div class="pay-title">Design &amp; Development Milestone</div><div class="pay-desc">Due upon delivery of the first full website draft for BCFC review.</div></div>
+        <div class="payment-card"><div class="pay-pct">30%</div><div class="pay-amount">$3,000</div><div class="pay-title">Final Delivery &amp; Launch</div><div class="pay-desc">Due upon final delivery, CMS training, and project completion.</div></div>
+      </div>
+      <p style="font-size:13px;color:rgba(255,255,255,0.28);margin-top:1rem;">We are open to adjusting the payment schedule to align with the Chamber's procurement processes.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── REFERENCES ── -->
+<section class="section section--white" id="references">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="sec-label-text">08 · References</span></div>
+    <h2 class="h-section reveal d1">Trusted by the organizations <span class="green">we serve.</span></h2>
+    <p class="h-sub reveal d2">The following contacts speak directly to our experience in accessible digital development, creative and community-focused design, and mission-aligned organizational work.</p>
+    <div class="ref-grid">
+      <div class="ref-card reveal d1">
+        <div class="ref-name">Lance Haavisto</div>
+        <div class="ref-role">Assistant Production Manager</div>
+        <div class="ref-org">PBS North – Native Report</div>
+        <div class="ref-contact">📞 <a href="tel:+19062358483">+1 (906) 235-8483</a></div>
+        <div class="ref-contact">✉ <a href="mailto:lhaavisto@pbsnorth.org">lhaavisto@pbsnorth.org</a></div>
+        <div class="ref-context">Oversaw the PBS North – Native Report website build — an accessible, visually rich platform integrating video archives, articles, and documentary content for First Nations communities across Minnesota.</div>
+      </div>
+      <div class="ref-card reveal d2">
+        <div class="ref-name">Dr. Jennifer Dockstator</div>
+        <div class="ref-role">Program Director</div>
+        <div class="ref-org">National Centre for Collaboration in Indigenous Education</div>
+        <div class="ref-contact">📞 <a href="tel:9056161352">905-616-1352</a></div>
+        <div class="ref-contact">✉ <a href="mailto:jsdockstator@gmail.com">jsdockstator@gmail.com</a></div>
+        <div class="ref-context">Collaborated on community-driven educational resources and multimedia digital platforms developed alongside educators, Knowledge Keepers, and community leaders across Canada.</div>
+      </div>
+      <div class="ref-card reveal d3">
+        <div class="ref-name">Jason Bruce</div>
+        <div class="ref-role">Co-Founder</div>
+        <div class="ref-org">Mentee</div>
+        <div class="ref-contact">✉ <a href="mailto:jason@mentee.ca">jason@mentee.ca</a></div>
+        <div class="ref-context">Client reference for the Mentee website — demonstrating our ability to deliver a high-quality, mission-aligned digital presence for a community-facing organization with exacting standards.</div>
+      </div>
+    </div>
+    <p class="note reveal">Additional references available upon request.</p>
+  </div>
+</section>
+
+
+<!-- ── CLOSING ── -->
+<section class="closing" id="closing">
+  <div class="closing-grid">
+    <div class="reveal">
+      <div class="sec-label sec-label--light" style="margin-bottom:1.5rem;"><span class="sec-label-text">Contact</span></div>
+      <h2 class="closing-title">Let's build something <span class="green">that matters.</span></h2>
+      <p class="closing-sub">We actively pursue and respond to public RFPs across government, arts and culture, education, nonprofit, and Indigenous sectors. If you're looking for a capable, compliant digital partner — get in touch.</p>
+      <div class="closing-btns">
+        <a href="mailto:hello@civicfirm.com?subject=BCFC Proposal — Follow-Up" class="btn-primary">Get In Touch →</a>
+        <a href="https://civicfirm.com" target="_blank" class="btn-ghost">Visit civicfirm.com</a>
+      </div>
+    </div>
+    <div class="closing-card reveal d2">
+      <div class="cc-label">Get In Touch</div>
+      <div class="cc-row"><div class="cc-key">Email</div><div class="cc-val"><a href="mailto:hello@civicfirm.com">hello@civicfirm.com</a></div></div>
+      <div class="cc-row"><div class="cc-key">Response Time</div><div class="cc-val">Within 2 business days</div></div>
+      <div class="cc-row"><div class="cc-key">Location</div><div class="cc-val">Remote-First, North America</div></div>
+      <div class="cc-row" style="margin-bottom:0;"><div class="cc-key">Website</div><div class="cc-val"><a href="https://civicfirm.com" target="_blank">civicfirm.com</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Ticker -->
+<div class="ticker-wrap">
+  <div class="ticker-track" style="animation-direction:reverse;">
+    <span class="ticker-item">AA COMPLIANT<span class="dot"> · </span></span>
+    <span class="ticker-item">ON-TIME DELIVERY<span class="dot"> · </span></span>
+    <span class="ticker-item">ADA TITLE II<span class="dot"> · </span></span>
+    <span class="ticker-item">CMS TRAINING INCLUDED<span class="dot"> · </span></span>
+    <span class="ticker-item">WE PURSUE RFPS<span class="dot"> · </span></span>
+    <span class="ticker-item">WCAG 2.1 AA COMPLIANT<span class="dot"> · </span></span>
+    <span class="ticker-item">MOBILE-FIRST<span class="dot"> · </span></span>
+    <span class="ticker-item">CONTENT MIGRATION<span class="dot"> · </span></span>
+    <span class="ticker-item">AA COMPLIANT<span class="dot"> · </span></span>
+    <span class="ticker-item">ON-TIME DELIVERY<span class="dot"> · </span></span>
+    <span class="ticker-item">ADA TITLE II<span class="dot"> · </span></span>
+    <span class="ticker-item">CMS TRAINING INCLUDED<span class="dot"> · </span></span>
+    <span class="ticker-item">WE PURSUE RFPS<span class="dot"> · </span></span>
+    <span class="ticker-item">WCAG 2.1 AA COMPLIANT<span class="dot"> · </span></span>
+    <span class="ticker-item">MOBILE-FIRST<span class="dot"> · </span></span>
+    <span class="ticker-item">CONTENT MIGRATION<span class="dot"> · </span></span>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="https://civicfirm.com" target="_blank" class="footer-logo">
+      <div class="footer-mark">C</div>
+      <span class="footer-wordmark">CIVIC<span>FIRM</span></span>
+    </a>
+    <div class="footer-copy">© 2026 Civic Firm. All rights reserved. &nbsp;·&nbsp; <a href="https://civicfirm.com" target="_blank">civicfirm.com</a></div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+const secIds = ['hero','letter','summary','about','scope','team','experience','timeline','budget','references'];
+const dots = document.querySelectorAll('.p-dot');
+const secObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const i = secIds.indexOf(e.target.id);
+      dots.forEach((d,j) => d.classList.toggle('active', i === j));
+    }
+  });
+}, { threshold: 0.35 });
+secIds.forEach(id => { const el = document.getElementById(id); if (el) secObs.observe(el); });
+</script>
+</body>
+</html>
