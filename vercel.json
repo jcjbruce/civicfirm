@@ -2,5 +2,11 @@
   "framework": null,
   "buildCommand": "pnpm run build",
   "outputDirectory": "dist",
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "redirects": [
+    { "source": "/proposals/bcfc", "destination": "/proposals/BCFC/index.html", "permanent": true },
+    { "source": "/proposals/bcfc/", "destination": "/proposals/BCFC/index.html", "permanent": true },
+    { "source": "/proposals/bcfc/index.html", "destination": "/proposals/BCFC/index.html", "permanent": true },
+    { "source": "/proposals/bcfc/:path*", "destination": "/proposals/BCFC/:path*", "permanent": true }
+  ]
 }
