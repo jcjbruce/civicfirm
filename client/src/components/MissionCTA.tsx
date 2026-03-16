@@ -1,29 +1,39 @@
 /*
- * DESIGN: MissionCTA — Bold statement break
- * No faded photo. Solid forest green background with subtle texture.
- * Large, confident typography. Simple and impactful.
- * Acts as a visual palate cleanser between content-heavy sections.
+ * DESIGN: MissionCTA — Full-bleed community photo with directional gradient
+ * Same approach as the hero: photo visible, directional overlay for readability.
+ * Bold statement. Community image at golden hour adds warmth and atmosphere.
  */
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+
+const BG_IMAGE = "/images/mission-community.jpg";
 
 export default function MissionCTA() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-[oklch(0.18_0.04_155)]">
-      {/* Subtle grid pattern for texture — same as hero */}
+    <section className="relative py-28 md:py-40 overflow-hidden">
+      {/* Background photo — full bleed */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${BG_IMAGE})` }}
       />
 
-      {/* Accent glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+      {/* Directional gradient: stronger center/left for text, lighter edges so photo shows */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(
+            to bottom,
+            oklch(0.12 0.04 155 / 0.40) 0%,
+            oklch(0.12 0.04 155 / 0.75) 30%,
+            oklch(0.12 0.04 155 / 0.82) 50%,
+            oklch(0.12 0.04 155 / 0.75) 70%,
+            oklch(0.12 0.04 155 / 0.40) 100%
+          )`,
+        }}
+      />
 
       <div className="container relative z-10" ref={ref}>
         <div className="max-w-3xl mx-auto text-center">
@@ -35,7 +45,7 @@ export default function MissionCTA() {
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.75rem)" }}
           >
             Technology should serve the{" "}
-            <span className="text-primary italic">community</span>,
+            <span className="text-primary">community</span>,
             <br />not the other way around.
           </motion.h2>
 
@@ -43,7 +53,7 @@ export default function MissionCTA() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto"
+            className="text-white/75 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto"
           >
             We understand the procurement cycles, compliance requirements, and community expectations that come with institutional work. Our process is designed to be transparent, accountable, and built for stakeholder review at every stage.
           </motion.p>
@@ -55,7 +65,7 @@ export default function MissionCTA() {
           >
             <a
               href="/rfp"
-              className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-7 py-3.5 rounded-md hover:bg-[oklch(0.40_0.14_150)] transition-all"
+              className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-7 py-3.5 rounded-md hover:bg-[oklch(0.40_0.14_150)] transition-all shadow-lg shadow-primary/25"
             >
               Learn More
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
