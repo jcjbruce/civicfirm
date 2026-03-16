@@ -413,23 +413,16 @@ export default function RFP() {
         </div>
       </section>
 
-      {/* ─── CTA — centered text over photo (distinct from homepage left-aligned) ─── */}
-      <section className="relative py-28 md:py-40 overflow-hidden">
+      {/* ─── CTA — clean solid background, no image, fully readable ─── */}
+      <section className="relative py-28 md:py-40 overflow-hidden bg-[oklch(0.14_0.04_155)]">
+        {/* Subtle radial glow accent */}
         <div
-          className="absolute inset-0 bg-cover bg-bottom bg-no-repeat"
-          style={{ backgroundImage: `url(${CTA_BG})` }}
-        />
-        {/* Strong top gradient for text readability, photo peeks through at bottom */}
-        <div
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            background: `linear-gradient(
-              to bottom,
-              oklch(0.08 0.04 155 / 0.95) 0%,
-              oklch(0.08 0.04 155 / 0.90) 35%,
-              oklch(0.08 0.04 155 / 0.70) 60%,
-              oklch(0.08 0.04 155 / 0.45) 80%,
-              oklch(0.08 0.04 155 / 0.30) 100%
+            background: `radial-gradient(
+              ellipse at 50% 30%,
+              oklch(0.35 0.14 150 / 0.08) 0%,
+              transparent 60%
             )`,
           }}
         />
