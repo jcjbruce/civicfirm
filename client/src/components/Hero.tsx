@@ -41,8 +41,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex items-center gap-3 mb-6"
           >
-            <div className="w-8 h-0.5 bg-primary" />
-            <span className="text-primary text-xs font-semibold uppercase tracking-[0.2em]">
+            <div className="w-8 h-0.5 bg-[oklch(0.78_0.14_75)]" />
+            <span className="text-[oklch(0.78_0.14_75)] text-xs font-semibold uppercase tracking-[0.2em]">
               Accessible Web Design for Public Organizations
             </span>
           </motion.div>

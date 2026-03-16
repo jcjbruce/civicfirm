@@ -68,7 +68,7 @@ function TeamCard({ member, index }: { member: (typeof team)[0]; index: number }
           className="w-full h-full object-cover object-top transition-all duration-700 md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-105"
         />
         {/* Accent bar: always visible on mobile, hover-revealed on desktop */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary md:scale-x-0 md:group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-[oklch(0.72_0.12_75)] md:scale-x-0 md:group-hover:scale-x-100 transition-transform duration-500 origin-left" />
       </div>
       <h4 className="font-[var(--font-display)] font-semibold text-foreground text-sm md:text-base tracking-tight">
         {member.name}
@@ -99,7 +99,7 @@ export default function Team() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-4"
             >
-              <div className="w-8 h-0.5 bg-primary" />
+              <div className="w-8 h-0.5 bg-[oklch(0.72_0.12_75)]" />
               <span className="section-label">Leadership</span>
             </motion.div>
 

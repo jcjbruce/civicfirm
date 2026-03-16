@@ -1,7 +1,8 @@
 /*
- * DESIGN: Kinetic Brutalism — Results Banner (Institutional Metrics)
- * Full-width primary section with large metrics.
- * Metrics now speak to institutional clients: compliance, delivery, support.
+ * DESIGN: Warm — Results Section (Institutional Metrics)
+ * Warm cream background with elegant dark text.
+ * Numbers in forest green, labels in warm charcoal.
+ * More refined than a solid green banner.
  */
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -18,17 +19,8 @@ export default function Results() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-20 bg-primary relative overflow-hidden">
-      {/* Subtle pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage: `linear-gradient(oklch(0.1 0.005 155) 1px, transparent 1px), linear-gradient(90deg, oklch(0.1 0.005 155) 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
-        }}
-      />
-
-      <div className="container relative z-10" ref={ref}>
+    <section className="py-16 md:py-20 bg-[oklch(0.97_0.012_80)] border-y border-[oklch(0.89_0.015_80)]">
+      <div className="container" ref={ref}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
           {metrics.map((metric, i) => (
             <motion.div
@@ -37,13 +29,13 @@ export default function Results() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className={`text-center ${
-                i < metrics.length - 1 ? "md:border-r md:border-primary-foreground/15" : ""
+                i < metrics.length - 1 ? "md:border-r md:border-[oklch(0.85_0.015_80)]" : ""
               }`}
             >
-              <div className="font-[var(--font-display)] font-extrabold text-xl sm:text-3xl md:text-4xl lg:text-5xl text-primary-foreground tracking-tight leading-tight">
+              <div className="font-[var(--font-display)] font-bold text-xl sm:text-3xl md:text-4xl lg:text-5xl text-primary tracking-tight leading-tight">
                 {metric.value}
               </div>
-              <div className="text-primary-foreground/60 text-xs uppercase tracking-[0.2em] mt-2">
+              <div className="text-muted-foreground text-xs uppercase tracking-[0.2em] mt-2" style={{ fontFamily: "var(--font-body)" }}>
                 {metric.label}
               </div>
             </motion.div>

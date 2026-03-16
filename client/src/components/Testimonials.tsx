@@ -115,8 +115,8 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="flex items-center gap-3 mb-4"
         >
-          <div className="w-8 h-0.5 bg-primary" />
-          <span className="section-label text-primary/70">
+          <div className="w-8 h-0.5 bg-[oklch(0.72_0.12_75)]" />
+          <span className="section-label">
             What Clients Say
           </span>
         </motion.div>

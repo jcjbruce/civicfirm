@@ -106,8 +106,8 @@ export default function FAQ() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-4 md:mb-6"
             >
-              <div className="w-12 h-px bg-primary" />
-              <span className="text-primary text-xs uppercase tracking-[0.3em] font-semibold">
+              <div className="w-12 h-px bg-[oklch(0.72_0.12_75)]" />
+              <span className="section-label">
                 FAQs
               </span>
             </motion.div>

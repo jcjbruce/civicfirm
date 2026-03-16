@@ -203,8 +203,8 @@ export default function Work() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-4"
             >
-              <div className="w-8 h-0.5 bg-primary" />
-              <span className="section-label text-[oklch(0.55_0.03_155)]">
+              <div className="w-8 h-0.5 bg-[oklch(0.72_0.12_75)]" />
+              <span className="section-label">
                 Portfolio
               </span>
             </motion.div>

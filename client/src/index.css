@@ -41,8 +41,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Typography */
-  --font-display: 'DM Sans', sans-serif;
+  /* Typography — serif display + clean sans body */
+  --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'DM Sans', sans-serif;
 
   /* Warm deep forest green for dark sections */
@@ -175,7 +175,11 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+  }
+  /* Ensure nav, buttons, labels stay sans-serif */
+  nav, button, a, span, label, input, textarea, select {
+    font-family: var(--font-body);
   }
 }
 
@@ -255,13 +259,14 @@
     background-color: oklch(0.45 0.14 150 / 0.08);
   }
 
-  /* Section label — warm green */
+  /* Section label — golden amber, sans-serif */
   .section-label {
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: oklch(0.45 0.14 150);
+    color: oklch(0.72 0.12 75);
+    font-family: var(--font-body);
   }
 }
 

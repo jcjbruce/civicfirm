@@ -36,7 +36,7 @@ export default function About() {
               </div>
             </div>
             {/* Green accent line */}
-            <div className="absolute -bottom-2 -right-2 w-24 h-1 bg-primary rounded" />
+            <div className="absolute -bottom-2 -right-2 w-24 h-1 bg-[oklch(0.72_0.12_75)] rounded" />
           </motion.div>
 
           {/* Text */}
@@ -47,7 +47,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex items-center gap-3 mb-4"
             >
-              <div className="w-8 h-0.5 bg-primary" />
+              <div className="w-8 h-0.5 bg-[oklch(0.72_0.12_75)]" />
               <span className="section-label">Who We Are</span>
             </motion.div>
 
