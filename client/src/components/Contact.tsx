@@ -7,7 +7,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const CTA_BG = "/images/mission-community.jpg";
+const CTA_BG = "/images/contact-bg.jpg";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -27,11 +27,10 @@ export default function Contact() {
         style={{
           background: `linear-gradient(
             to right,
-            oklch(0.12 0.04 155 / 0.95) 0%,
-            oklch(0.12 0.04 155 / 0.88) 30%,
-            oklch(0.12 0.04 155 / 0.55) 60%,
-            oklch(0.12 0.04 155 / 0.25) 80%,
-            oklch(0.12 0.04 155 / 0.15) 100%
+            oklch(0.10 0.04 155 / 0.92) 0%,
+            oklch(0.10 0.04 155 / 0.85) 35%,
+            oklch(0.10 0.04 155 / 0.50) 65%,
+            oklch(0.10 0.04 155 / 0.20) 100%
           )`,
         }}
       />

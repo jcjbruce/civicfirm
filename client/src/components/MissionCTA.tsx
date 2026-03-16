@@ -7,7 +7,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const BG_IMAGE = "/images/mission-bg.jpg";
+const BG_IMAGE = "/images/mission-bg-v2.jpg";
 
 export default function MissionCTA() {
   const ref = useRef(null);
@@ -17,7 +17,7 @@ export default function MissionCTA() {
     <section className="relative py-28 md:py-40 overflow-hidden">
       {/* Background photo — full bleed */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-bottom bg-no-repeat"
         style={{ backgroundImage: `url(${BG_IMAGE})` }}
       />
 
@@ -27,11 +27,10 @@ export default function MissionCTA() {
         style={{
           background: `linear-gradient(
             to bottom,
-            oklch(0.10 0.04 155 / 0.35) 0%,
-            oklch(0.10 0.04 155 / 0.72) 25%,
-            oklch(0.10 0.04 155 / 0.80) 50%,
-            oklch(0.10 0.04 155 / 0.72) 75%,
-            oklch(0.10 0.04 155 / 0.35) 100%
+            oklch(0.10 0.04 155 / 0.50) 0%,
+            oklch(0.10 0.04 155 / 0.60) 30%,
+            oklch(0.10 0.04 155 / 0.55) 60%,
+            oklch(0.10 0.04 155 / 0.30) 100%
           )`,
         }}
       />
