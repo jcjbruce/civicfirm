@@ -16,7 +16,7 @@ import Results from "@/components/Results";
 import About from "@/components/About";
 import MissionCTA from "@/components/MissionCTA";
 import Process from "@/components/Process";
-import Testimonials from "@/components/Testimonials";
+
 import Team from "@/components/Team";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
@@ -48,7 +48,22 @@ export default function Home() {
       <About />
       <MissionCTA />
       <Process />
-      <Testimonials />
+
+      {/* Visual divider between two dark-adjacent sections */}
+      <div className="relative py-16 bg-background">
+        <div className="container">
+          <div className="flex items-center gap-6">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-primary/40" />
+              <div className="w-2 h-2 rounded-full bg-primary/60" />
+              <div className="w-2 h-2 rounded-full bg-primary/40" />
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          </div>
+        </div>
+      </div>
+
       <Team />
       <FAQ />
       <Contact />
