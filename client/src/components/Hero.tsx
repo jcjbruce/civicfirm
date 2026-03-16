@@ -7,7 +7,7 @@
  */
 import { motion } from "framer-motion";
 
-const HERO_IMAGE = "/images/hero-civic.jpg";
+const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663407421710/CU5JQUQHP3FutNoS5xA4np/hero-gov-1-6P3667TTpmnuzabATGBuBS.webp";
 
 const trustBadges = [
   "WCAG 2.1 AA",

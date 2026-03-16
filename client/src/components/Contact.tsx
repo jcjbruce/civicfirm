@@ -1,14 +1,13 @@
 /*
- * DESIGN: Institutional — Contact / CTA Section
- * Full-width section with aerial city photo background and navy overlay.
- * White text. Dual CTA: Submit RFP + Email.
- * Messaging targets procurement officers and institutional clients.
+ * DESIGN: Contact — Full-bleed photo with directional gradient
+ * Same approach as the hero: photo visible, directional overlay for readability.
+ * Community park at golden hour — warm, inviting, community-focused.
+ * Text left-aligned on the darker left side, photo breathes on the right.
  */
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Link } from "wouter";
 
-const CTA_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663407421710/CU5JQUQHP3FutNoS5xA4np/cta-bg-YoDCuPk6tnM8rj5smjvjse.webp";
+const CTA_BG = "/images/mission-community.jpg";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -16,13 +15,26 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-24 md:py-36 overflow-hidden">
-      {/* Background photo */}
+      {/* Background photo — full bleed */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${CTA_BG})` }}
       />
-      {/* Navy overlay */}
-      <div className="absolute inset-0 bg-[oklch(0.15_0.04_155/0.88)]" />
+
+      {/* Directional gradient: strong left → transparent right (same as hero) */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(
+            to right,
+            oklch(0.12 0.04 155 / 0.95) 0%,
+            oklch(0.12 0.04 155 / 0.88) 30%,
+            oklch(0.12 0.04 155 / 0.55) 60%,
+            oklch(0.12 0.04 155 / 0.25) 80%,
+            oklch(0.12 0.04 155 / 0.15) 100%
+          )`,
+        }}
+      />
 
       <div className="container relative z-10">
         <div ref={ref} className="max-w-3xl">
@@ -53,7 +65,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-white/75 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl"
+            className="text-white/80 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl"
           >
             Whether you need an accessible website, a digital strategy partner, or a team that understands public-sector compliance — we're ready to help. Let's talk about your project.
           </motion.p>

@@ -1,12 +1,13 @@
 /*
- * DESIGN: MissionCTA — Full-bleed community photo with directional gradient
+ * DESIGN: MissionCTA — Full-bleed photo with directional gradient
  * Same approach as the hero: photo visible, directional overlay for readability.
- * Bold statement. Community image at golden hour adds warmth and atmosphere.
+ * Library interior at dusk — people using technology in a warm civic space.
+ * "Technology should serve the community" — the image literally shows that.
  */
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const BG_IMAGE = "/images/mission-community.jpg";
+const BG_IMAGE = "/images/mission-bg.jpg";
 
 export default function MissionCTA() {
   const ref = useRef(null);
@@ -20,17 +21,17 @@ export default function MissionCTA() {
         style={{ backgroundImage: `url(${BG_IMAGE})` }}
       />
 
-      {/* Directional gradient: stronger center/left for text, lighter edges so photo shows */}
+      {/* Directional gradient: stronger center for text, lighter edges so photo shows */}
       <div
         className="absolute inset-0"
         style={{
           background: `linear-gradient(
             to bottom,
-            oklch(0.12 0.04 155 / 0.40) 0%,
-            oklch(0.12 0.04 155 / 0.75) 30%,
-            oklch(0.12 0.04 155 / 0.82) 50%,
-            oklch(0.12 0.04 155 / 0.75) 70%,
-            oklch(0.12 0.04 155 / 0.40) 100%
+            oklch(0.10 0.04 155 / 0.35) 0%,
+            oklch(0.10 0.04 155 / 0.72) 25%,
+            oklch(0.10 0.04 155 / 0.80) 50%,
+            oklch(0.10 0.04 155 / 0.72) 75%,
+            oklch(0.10 0.04 155 / 0.35) 100%
           )`,
         }}
       />
@@ -53,7 +54,7 @@ export default function MissionCTA() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-white/75 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto"
+            className="text-white/80 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto"
           >
             We understand the procurement cycles, compliance requirements, and community expectations that come with institutional work. Our process is designed to be transparent, accountable, and built for stakeholder review at every stage.
           </motion.p>
