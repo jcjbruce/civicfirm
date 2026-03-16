@@ -115,12 +115,12 @@ export default function RFP() {
       <Navbar />
 
       {/* Page header — navy with hero photo */}
-      <div className="relative bg-[oklch(0.14_0.06_250)] pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden">
+      <div className="relative bg-[oklch(0.18_0.04_155)] pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
           style={{ backgroundImage: `url(${HERO_BG})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.12_0.06_250/0.95)] to-[oklch(0.12_0.06_250/0.7)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.15_0.04_155/0.95)] to-[oklch(0.15_0.04_155/0.7)]" />
         <div className="container relative z-10" ref={heroRef}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -228,7 +228,7 @@ export default function RFP() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.07 }}
-                className="bg-secondary dark:bg-[oklch(0.22_0.05_250)] rounded-lg p-6 border border-border hover:border-primary/30 hover:shadow-sm transition-all duration-300 group"
+                className="bg-secondary dark:bg-[oklch(0.26_0.03_155)] rounded-lg p-6 border border-border hover:border-primary/30 hover:shadow-sm transition-all duration-300 group"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-300 flex-shrink-0">
@@ -253,7 +253,7 @@ export default function RFP() {
       </section>
 
       {/* Credentials */}
-      <section className="py-16 md:py-20 bg-[oklch(0.14_0.06_250)]" ref={credRef}>
+      <section className="py-16 md:py-20 bg-[oklch(0.18_0.04_155)]" ref={credRef}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -283,7 +283,7 @@ export default function RFP() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 4) * 0.06 }}
-                className="bg-[oklch(0.2_0.055_250)] rounded-lg p-5 border border-[oklch(0.28_0.05_250)] hover:border-primary/40 transition-all duration-300"
+                className="bg-[oklch(0.24_0.035_155)] rounded-lg p-5 border border-[oklch(0.30_0.03_155)] hover:border-primary/40 transition-all duration-300"
               >
                 <div className="inline-block bg-primary/15 text-primary text-[10px] uppercase tracking-[0.15em] font-bold px-2.5 py-1 rounded mb-3">
                   {cred.badge}
@@ -296,7 +296,7 @@ export default function RFP() {
       </section>
 
       {/* Sectors We Serve */}
-      <section className="py-16 md:py-20 bg-secondary dark:bg-[oklch(0.18_0.055_250)]" ref={sectorsRef}>
+      <section className="py-16 md:py-20 bg-secondary dark:bg-[oklch(0.22_0.035_155)]" ref={sectorsRef}>
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
             <div>
@@ -335,7 +335,7 @@ export default function RFP() {
               animate={sectorsInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.35 }}
               href="mailto:info@civicfirm.com"
-              className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-6 py-3 rounded-md hover:bg-[oklch(0.42_0.18_145)] transition-all flex-shrink-0"
+              className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-6 py-3 rounded-md hover:bg-[oklch(0.40_0.14_150)] transition-all flex-shrink-0"
             >
               Get In Touch
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -353,7 +353,7 @@ export default function RFP() {
             {sectors.map((sector) => (
               <div
                 key={sector}
-                className="flex items-center gap-3 bg-background dark:bg-[oklch(0.22_0.05_250)] rounded-md px-4 py-3 border border-border hover:border-primary/30 transition-all duration-200"
+                className="flex items-center gap-3 bg-background dark:bg-[oklch(0.26_0.03_155)] rounded-md px-4 py-3 border border-border hover:border-primary/30 transition-all duration-200"
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                 <span className="text-foreground text-sm">{sector}</span>
@@ -382,7 +382,7 @@ export default function RFP() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href="mailto:info@civicfirm.com"
-                className="inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold text-sm px-7 py-3.5 rounded-md hover:bg-[oklch(0.42_0.18_145)] transition-all shadow-md shadow-primary/20"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold text-sm px-7 py-3.5 rounded-md hover:bg-[oklch(0.40_0.14_150)] transition-all shadow-md shadow-primary/20"
               >
                 Email Us
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

@@ -9,7 +9,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[oklch(0.14_0.06_250)] border-t border-[oklch(0.22_0.05_250)]">
+    <footer className="bg-[oklch(0.18_0.04_155)] border-t border-[oklch(0.26_0.03_155)]">
       <div className="container py-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
           {/* Logo + tagline */}
@@ -105,7 +105,7 @@ export default function Footer() {
               </span>
               <a
                 href="/#contact"
-                className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-xs px-4 py-2.5 rounded-md hover:bg-[oklch(0.42_0.18_145)] transition-all mt-2 w-fit"
+                className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-xs px-4 py-2.5 rounded-md hover:bg-[oklch(0.40_0.14_150)] transition-all mt-2 w-fit"
               >
                 Work With Us
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -117,7 +117,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-12 pt-8 border-t border-[oklch(0.22_0.05_250)]">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-12 pt-8 border-t border-[oklch(0.26_0.03_155)]">
           <span className="text-white/30 text-xs">
             &copy; {currentYear} Civic Firm. All rights reserved.
           </span>

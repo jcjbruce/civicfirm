@@ -143,7 +143,7 @@ export default function Testimonials() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="bg-white border border-[oklch(0.88_0.01_250)] rounded-xl p-6 sm:p-8 md:p-10 shadow-sm"
+                className="bg-white border border-[oklch(0.89_0.015_80)] rounded-xl p-6 sm:p-8 md:p-10 shadow-sm"
               >
                 {/* Quote */}
                 <div className="mb-6">
@@ -161,7 +161,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Author */}
-                <div className="flex items-center gap-4 pt-5 border-t border-[oklch(0.90_0.01_250)]">
+                <div className="flex items-center gap-4 pt-5 border-t border-[oklch(0.90_0.015_80)]">
                   <div
                     className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold"
                     style={{ background: `${t.accent}22`, color: t.accent }}

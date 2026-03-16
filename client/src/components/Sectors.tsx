@@ -87,7 +87,7 @@ export default function Sectors() {
   const headInView = useInView(headRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="sectors" className="py-20 md:py-28 bg-secondary dark:bg-[oklch(0.18_0.055_250)]">
+    <section id="sectors" className="py-20 md:py-28 bg-secondary dark:bg-[oklch(0.22_0.035_155)]">
       <div className="container">
         {/* Header */}
         <div ref={headRef} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
@@ -132,7 +132,7 @@ export default function Sectors() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: (i % 4) * 0.07, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-background dark:bg-[oklch(0.22_0.05_250)] rounded-lg p-6 border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
+              className="bg-background dark:bg-[oklch(0.26_0.03_155)] rounded-lg p-6 border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
             >
               {/* Icon in green circle */}
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-300">
@@ -154,7 +154,7 @@ export default function Sectors() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 bg-background dark:bg-[oklch(0.22_0.05_250)] rounded-lg p-6 border border-border"
+          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 bg-background dark:bg-[oklch(0.26_0.03_155)] rounded-lg p-6 border border-border"
         >
           <div>
             <p className="font-[var(--font-display)] font-semibold text-foreground text-base">
@@ -166,7 +166,7 @@ export default function Sectors() {
           </div>
           <a
             href="/#contact"
-            className="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-[oklch(0.42_0.18_145)] transition-all whitespace-nowrap"
+            className="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-[oklch(0.40_0.14_150)] transition-all whitespace-nowrap"
           >
             Get In Touch
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

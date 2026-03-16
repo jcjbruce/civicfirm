@@ -55,7 +55,7 @@ export default function Compliance() {
   const headInView = useInView(headRef, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-20 md:py-28 bg-[oklch(0.14_0.06_250)]">
+    <section className="py-20 md:py-28 bg-[oklch(0.18_0.04_155)]">
       <div className="container">
         {/* Header */}
         <div ref={headRef} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
@@ -102,7 +102,7 @@ export default function Compliance() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: (i % 4) * 0.07 }}
-              className="bg-[oklch(0.2_0.055_250)] rounded-lg p-6 border border-[oklch(0.28_0.05_250)] hover:border-primary/40 transition-all duration-300 group"
+              className="bg-[oklch(0.24_0.035_155)] rounded-lg p-6 border border-[oklch(0.30_0.03_155)] hover:border-primary/40 transition-all duration-300 group"
             >
               {/* Badge */}
               <div className="inline-block bg-primary/15 text-primary text-[10px] uppercase tracking-[0.15em] font-bold px-2.5 py-1 rounded mb-3">
@@ -132,7 +132,7 @@ export default function Compliance() {
           </p>
           <a
             href="/#contact"
-            className="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-[oklch(0.42_0.18_145)] transition-all whitespace-nowrap"
+            className="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-[oklch(0.40_0.14_150)] transition-all whitespace-nowrap"
           >
             Work With Us
           </a>

@@ -70,12 +70,12 @@ export default function Navbar() {
   }, [location, setLocation]);
 
   const navBg = scrolled || isRFPPage || menuOpen
-    ? "bg-white dark:bg-[oklch(0.14_0.06_250)] shadow-sm border-b border-gray-100 dark:border-[oklch(0.28_0.05_250)]"
+    ? "bg-white dark:bg-[oklch(0.18_0.04_155)] shadow-sm border-b border-gray-100 dark:border-[oklch(0.30_0.03_155)]"
     : "bg-transparent";
 
   const linkBaseClass = (isScrolledOrRFP: boolean) =>
     isScrolledOrRFP
-      ? "text-[oklch(0.35_0.04_250)] hover:text-[oklch(0.18_0.04_250)] dark:text-[oklch(0.7_0.01_250)] dark:hover:text-white"
+      ? "text-[oklch(0.35_0.02_75)] hover:text-[oklch(0.22_0.02_75)] dark:text-[oklch(0.7_0.01_80)] dark:hover:text-white"
       : "text-white/80 hover:text-white";
 
   return (
@@ -119,7 +119,7 @@ export default function Navbar() {
                 aria-label="Toggle theme"
                 className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
                   scrolled || isRFPPage
-                    ? "hover:bg-gray-100 dark:hover:bg-[oklch(0.22_0.05_250)] text-[oklch(0.35_0.04_250)] dark:text-[oklch(0.7_0.01_250)]"
+                    ? "hover:bg-gray-100 dark:hover:bg-[oklch(0.26_0.03_155)] text-[oklch(0.35_0.02_75)] dark:text-[oklch(0.7_0.01_80)]"
                     : "hover:bg-white/10 text-white/80"
                 }`}
               >
@@ -149,7 +149,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
               className={`md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 transition-colors ${
-                scrolled || isRFPPage || menuOpen ? "text-[oklch(0.18_0.04_250)] dark:text-white" : "text-white"
+                scrolled || isRFPPage || menuOpen ? "text-[oklch(0.22_0.02_75)] dark:text-white" : "text-white"
               }`}
             >
               <span className={`block h-0.5 bg-current transition-all duration-300 ${menuOpen ? "w-5 rotate-45 translate-y-2" : "w-5"}`} />
@@ -162,7 +162,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-white dark:bg-[oklch(0.14_0.06_250)] transition-all duration-300 flex flex-col ${
+        className={`fixed inset-0 z-40 bg-white dark:bg-[oklch(0.18_0.04_155)] transition-all duration-300 flex flex-col ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -173,7 +173,7 @@ export default function Navbar() {
               key={link.label}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="text-2xl font-bold py-3 border-b border-gray-100 dark:border-[oklch(0.28_0.05_250)] transition-all text-[oklch(0.18_0.04_250)] dark:text-white"
+              className="text-2xl font-bold py-3 border-b border-gray-100 dark:border-[oklch(0.30_0.03_155)] transition-all text-[oklch(0.22_0.02_75)] dark:text-white"
               style={{ transitionDelay: menuOpen ? `${i * 40}ms` : "0ms" }}
             >
               {link.label}

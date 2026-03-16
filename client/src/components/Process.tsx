@@ -44,7 +44,7 @@ export default function Process() {
   const headInView = useInView(headRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="process" className="py-20 md:py-28 bg-secondary dark:bg-[oklch(0.18_0.055_250)]">
+    <section id="process" className="py-20 md:py-28 bg-secondary dark:bg-[oklch(0.22_0.035_155)]">
       <div className="container">
         {/* Header */}
         <div ref={headRef} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
@@ -89,7 +89,7 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-background dark:bg-[oklch(0.22_0.05_250)] rounded-lg p-6 border border-border hover:border-primary/30 hover:shadow-sm transition-all duration-300 group"
+              className="bg-background dark:bg-[oklch(0.26_0.03_155)] rounded-lg p-6 border border-border hover:border-primary/30 hover:shadow-sm transition-all duration-300 group"
             >
               {/* Step number */}
               <div className="flex items-center gap-3 mb-4">
@@ -127,7 +127,7 @@ export default function Process() {
           </p>
           <a
             href="/rfp"
-            className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-6 py-3 rounded-md hover:bg-[oklch(0.42_0.18_145)] transition-all"
+            className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-6 py-3 rounded-md hover:bg-[oklch(0.40_0.14_150)] transition-all"
           >
             Our Approach
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

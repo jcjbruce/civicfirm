@@ -91,7 +91,7 @@ function ProjectCard({
         delay: index * 0.08,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="group relative block overflow-hidden rounded-xl bg-[oklch(0.10_0.03_250)]"
+      className="group relative block overflow-hidden rounded-xl bg-[oklch(0.14_0.03_155)]"
     >
       {/* Image — uses object-cover with center positioning so nothing important gets cut */}
       <div
@@ -145,7 +145,7 @@ function ProjectCard({
       </div>
 
       {/* Text panel — BELOW the image, not overlaid. Solid background, always readable. */}
-      <div className="bg-[oklch(0.10_0.03_250)] px-4 py-4 md:px-5 md:py-5 lg:px-6 lg:py-5">
+      <div className="bg-[oklch(0.14_0.03_155)] px-4 py-4 md:px-5 md:py-5 lg:px-6 lg:py-5">
         <p
           className="text-[10px] md:text-[11px] uppercase tracking-[0.14em] font-semibold mb-1"
           style={{ color: project.accent }}
@@ -189,7 +189,7 @@ export default function Work() {
   const standard = projects.filter((p) => !p.featured);
 
   return (
-    <section id="work" className="py-20 md:py-28 bg-[oklch(0.08_0.03_250)]">
+    <section id="work" className="py-20 md:py-28 bg-[oklch(0.12_0.03_155)]">
       <div className="container">
         {/* Section header */}
         <div
@@ -204,7 +204,7 @@ export default function Work() {
               className="flex items-center gap-3 mb-4"
             >
               <div className="w-8 h-0.5 bg-primary" />
-              <span className="section-label text-[oklch(0.55_0.04_250)]">
+              <span className="section-label text-[oklch(0.55_0.03_155)]">
                 Portfolio
               </span>
             </motion.div>
@@ -264,7 +264,7 @@ export default function Work() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-[oklch(0.20_0.04_250)] pt-8 gap-4"
+          className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-[oklch(0.24_0.03_155)] pt-8 gap-4"
         >
           <p className="text-white/55 text-xs">
             All projects built to WCAG 2.1 AA accessibility standards.

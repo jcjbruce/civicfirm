@@ -37,7 +37,7 @@ export default function Clients() {
               initial={{ opacity: 0, y: 12 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              className="flex flex-col items-center py-4 px-3 rounded-lg bg-secondary dark:bg-[oklch(0.18_0.05_250)] border border-border"
+              className="flex flex-col items-center py-4 px-3 rounded-lg bg-secondary dark:bg-[oklch(0.22_0.035_155)] border border-border"
             >
               <span className="font-[var(--font-display)] font-bold text-lg md:text-2xl text-primary tracking-tight">
                 {stat.value}

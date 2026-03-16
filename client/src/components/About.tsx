@@ -30,7 +30,7 @@ export default function About() {
                 className="w-full h-full object-cover"
               />
               {/* Overlay badge */}
-              <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-[oklch(0.22_0.05_250)] rounded-md px-4 py-3 shadow-lg">
+              <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-[oklch(0.26_0.03_155)] rounded-md px-4 py-3 shadow-lg">
                 <div className="text-xs text-muted-foreground uppercase tracking-[0.1em] mb-0.5">Serving communities since</div>
                 <div className="font-[var(--font-display)] font-bold text-foreground text-lg">2019</div>
               </div>

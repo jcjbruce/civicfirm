@@ -23,7 +23,7 @@ export default function Results() {
       <div
         className="absolute inset-0 opacity-[0.06]"
         style={{
-          backgroundImage: `linear-gradient(oklch(0.1 0.005 250) 1px, transparent 1px), linear-gradient(90deg, oklch(0.1 0.005 250) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(oklch(0.1 0.005 155) 1px, transparent 1px), linear-gradient(90deg, oklch(0.1 0.005 155) 1px, transparent 1px)`,
           backgroundSize: "40px 40px",
         }}
       />

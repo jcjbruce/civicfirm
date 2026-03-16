@@ -27,9 +27,9 @@ export default function Hero() {
       />
 
       {/* Navy gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.12_0.06_250/0.93)] via-[oklch(0.12_0.06_250/0.78)] to-[oklch(0.12_0.06_250/0.45)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.15_0.04_155/0.93)] via-[oklch(0.15_0.04_155/0.78)] to-[oklch(0.15_0.04_155/0.45)]" />
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[oklch(0.14_0.06_250/0.7)] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[oklch(0.18_0.04_155/0.7)] to-transparent" />
 
       {/* Content */}
       <div className="container relative z-10 pt-28 pb-20 md:pt-36 md:pb-28">
@@ -79,7 +79,7 @@ export default function Hero() {
           >
             <a
               href="/#contact"
-              className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-6 py-3.5 rounded-md hover:bg-[oklch(0.42_0.18_145)] transition-all shadow-lg shadow-primary/30"
+              className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-6 py-3.5 rounded-md hover:bg-[oklch(0.40_0.14_150)] transition-all shadow-lg shadow-primary/30"
             >
               Work With Us
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

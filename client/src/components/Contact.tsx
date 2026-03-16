@@ -22,7 +22,7 @@ export default function Contact() {
         style={{ backgroundImage: `url(${CTA_BG})` }}
       />
       {/* Navy overlay */}
-      <div className="absolute inset-0 bg-[oklch(0.12_0.06_250/0.88)]" />
+      <div className="absolute inset-0 bg-[oklch(0.15_0.04_155/0.88)]" />
 
       <div className="container relative z-10">
         <div ref={ref} className="max-w-3xl">
@@ -66,7 +66,7 @@ export default function Contact() {
           >
             <a
               href="mailto:info@civicfirm.com"
-              className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-7 py-4 rounded-md hover:bg-[oklch(0.42_0.18_145)] transition-all shadow-lg shadow-primary/30"
+              className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-7 py-4 rounded-md hover:bg-[oklch(0.40_0.14_150)] transition-all shadow-lg shadow-primary/30"
             >
               Get In Touch
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

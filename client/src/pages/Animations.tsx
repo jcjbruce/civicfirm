@@ -78,7 +78,7 @@ function VideoCard({ anim, index }: { anim: (typeof animations)[0]; index: numbe
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="group bg-white dark:bg-[oklch(0.18_0.055_250)] rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-[oklch(0.28_0.05_250)] hover:shadow-md transition-shadow duration-300"
+      className="group bg-white dark:bg-[oklch(0.22_0.035_155)] rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-[oklch(0.30_0.03_155)] hover:shadow-md transition-shadow duration-300"
     >
       {/* Video container */}
       <div
@@ -106,7 +106,7 @@ function VideoCard({ anim, index }: { anim: (typeof animations)[0]; index: numbe
           style={{
             background: playing && !hovered
               ? "transparent"
-              : "linear-gradient(135deg, oklch(0.18 0.08 250 / 0.55) 0%, oklch(0.22 0.06 250 / 0.35) 100%)",
+              : "linear-gradient(135deg, oklch(0.22 0.06 155 / 0.55) 0%, oklch(0.26 0.04 155 / 0.35) 100%)",
           }}
         />
 
@@ -147,7 +147,7 @@ function VideoCard({ anim, index }: { anim: (typeof animations)[0]; index: numbe
       {/* Caption */}
       <div className="px-5 py-4 flex items-start justify-between gap-4">
         <div>
-          <h3 className="font-[var(--font-display)] font-bold text-[oklch(0.18_0.04_250)] dark:text-white text-base leading-snug">
+          <h3 className="font-[var(--font-display)] font-bold text-[oklch(0.22_0.02_75)] dark:text-white text-base leading-snug">
             {anim.title}
           </h3>
           <p className="text-muted-foreground text-xs uppercase tracking-[0.15em] mt-1">
@@ -164,14 +164,14 @@ function VideoCard({ anim, index }: { anim: (typeof animations)[0]; index: numbe
 
 export default function Animations() {
   return (
-    <div className="min-h-screen flex flex-col bg-[oklch(0.97_0.005_250)] dark:bg-[oklch(0.12_0.06_250)] text-foreground">
+    <div className="min-h-screen flex flex-col bg-[oklch(0.97_0.01_80)] dark:bg-[oklch(0.15_0.04_155)] text-foreground">
       <Navbar />
 
       {/* Navy hero header — matches RFP page and institutional style */}
       <section
         className="pt-32 pb-16 md:pt-40 md:pb-20 relative overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, oklch(0.18 0.08 250) 0%, oklch(0.22 0.06 250) 100%)",
+          background: "linear-gradient(135deg, oklch(0.22 0.06 155) 0%, oklch(0.26 0.04 155) 100%)",
         }}
       >
         {/* Subtle grid texture */}
@@ -250,7 +250,7 @@ export default function Animations() {
       <section
         className="py-16 md:py-24"
         style={{
-          background: "linear-gradient(135deg, oklch(0.18 0.08 250) 0%, oklch(0.22 0.06 250) 100%)",
+          background: "linear-gradient(135deg, oklch(0.22 0.06 155) 0%, oklch(0.26 0.04 155) 100%)",
         }}
       >
         <div className="container">
