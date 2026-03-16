@@ -14,6 +14,8 @@
     { "source": "/proposals/Bcfc", "destination": "/proposals/BCFC/index.html", "permanent": true },
     { "source": "/proposals/BcFc/:path*", "destination": "/proposals/BCFC/:path*", "permanent": true },
     { "source": "/proposals/BcFc", "destination": "/proposals/BCFC/index.html", "permanent": true },
+    { "source": "/proposals/OUTNEBRASKA", "destination": "/proposals/OUTNEBRASKA/index.html", "permanent": true },
+    { "source": "/proposals/OUTNEBRASKA/", "destination": "/proposals/OUTNEBRASKA/index.html", "permanent": true },
     { "source": "/proposals/outnebraska", "destination": "/proposals/OUTNEBRASKA/index.html", "permanent": true },
     { "source": "/proposals/outnebraska/", "destination": "/proposals/OUTNEBRASKA/index.html", "permanent": true },
     { "source": "/proposals/outnebraska/index.html", "destination": "/proposals/OUTNEBRASKA/index.html", "permanent": true },
