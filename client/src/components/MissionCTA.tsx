@@ -14,7 +14,7 @@ export default function MissionCTA() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-32 md:py-48 overflow-hidden">
+    <section className="relative pt-24 pb-44 md:pt-36 md:pb-60 overflow-hidden">
       {/* Background photo — full bleed */}
       <div
         className="absolute inset-0 bg-cover bg-bottom bg-no-repeat"
